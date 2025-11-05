@@ -9,6 +9,7 @@ cu_cp:
           - plmn: "20893"
             tai_slice_support_list:
               - sst: 1
+                sd: "010203"
   inactivity_timer: 7200            # Sets the UE/PDU Session/DRB inactivity timer to 7200 seconds. Supported: [1 - 7200].
 
 cu_up:
@@ -19,7 +20,7 @@ cu_up:
 
 ru_sdr:
   device_driver: zmq                # The RF driver name.
-  device_args: tx_port=tcp://127.0.0.1:2000,rx_port=tcp://127.0.0.1:2001,base_srate=23.04e6 # Optionally pass arguments to the selected RF driver.
+  device_args: tx_port=tcp://127.0.0.1:2000,rx_port=tcp://127.0.0.1:2001,base_srate=23.04e6,verbose # Optionally pass arguments to the selected RF driver.
   srate: 23.04                      # RF sample rate might need to be adjusted according to selected bandwidth.
   tx_gain: 75                       # Transmit gain of the RF might need to adjusted to the given situation.
   rx_gain: 75                       # Receive gain of the RF might need to adjusted to the given situation.
@@ -48,7 +49,7 @@ cell_cfg:
 
 log:
   filename: /home/free5gc/srsran/srsRAN_Project/mono_logs/gnb.log            # Path of the log file.
-  all_level: info                   # Logging level applied to all layers.
+  all_level: warning                  # Set to debug to see detailed ZMQ handshake when 'verbose' is enabled in device_args.
 
 pcap:
   mac_enable: true                 # Set to true to enable MAC-layer PCAPs.
