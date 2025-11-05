@@ -2,14 +2,16 @@
 
 cu_cp:
   amf:
-    addr: 127.0.0.18
-    bind_addr: 127.0.0.1
+    addr: 127.0.0.18               # The address or hostname of the AMF.
+    port: 38412
+    bind_addr: 127.0.0.1            # A local IP that the gNB binds to for traffic from the AMF.
     supported_tracking_areas:
       - tac: 1
         plmn_list:
           - plmn: "20893"
             tai_slice_support_list:
               - sst: 1
+                sd: "010203"
   e1ap:
     bind_addr: 127.0.20.1
   f1ap:
