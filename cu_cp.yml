@@ -1,6 +1,7 @@
 # Example config for a locally deployed CU-CP listening on the localhost interface for a CU-UP and DU connection
 
 cu_cp:
+  request_pdu_session_timeout: 20
   amf:
     addr: 127.0.0.18               # The address or hostname of the AMF.
     port: 38412
