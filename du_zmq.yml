@@ -48,3 +48,9 @@ pcap:
   f1ap_filename: /home/free5gc/srsran/srsRAN_Project/pcaps/du_f1ap.pcap
   f1u_enable: true
   f1u_filename: /home/free5gc/srsran/srsRAN_Project/pcaps/du_f1u.pcap
+
+# Below work for VM env
+expert_execution:
+  threads:
+    main_pool:
+      backoff_period: 1000                        # Optional UINT (50). Main thread pool back-off period, in microseconds.

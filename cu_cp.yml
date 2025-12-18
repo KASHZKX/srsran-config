@@ -1,7 +1,8 @@
 # Example config for a locally deployed CU-CP listening on the localhost interface for a CU-UP and DU connection
 
 cu_cp:
-  request_pdu_session_timeout: 20
+  request_pdu_session_timeout: 40
+  inactivity_timer: 7000
   amf:
     addr: 127.0.0.18               # The address or hostname of the AMF.
     port: 38412
@@ -29,3 +30,9 @@ pcap:
   f1ap_filename: /home/free5gc/srsran/srsRAN_Project/pcaps/cu_cp_f1ap.pcap
   e1ap_enable: true
   e1ap_filename: /home/free5gc/srsran/srsRAN_Project/pcaps/cu_cp_e1ap.pcap
+
+# Below work for VM env
+expert_execution:
+  threads:
+    main_pool:
+      backoff_period: 1000
