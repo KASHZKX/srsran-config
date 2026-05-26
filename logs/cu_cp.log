@@ -1,173 +1,229 @@
-2025-11-24T08:04:45.197438 [CU-CP   ] [I] Built in Release mode using commit 8e4f0bed05 on branch main
-2025-11-24T08:04:45.787318 [CU-CP   ] [W] Could not check scaling governor. filename=/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor error=No such file or directory
-2025-11-24T08:04:45.787334 [CU-CP   ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "srsran_performance" script
-2025-11-24T08:04:45.787962 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=2, task_queue_size=2048, backoff_period=50us and priority=96.
-2025-11-24T08:04:45.788836 [CU-CP   ] [I] Starting CU-CP...
-2025-11-24T08:04:45.789041 [CU-CP   ] [I] N2: Connection to AMF on 127.0.0.18:38412 was established
-2025-11-24T08:04:45.789124 [NGAP    ] [I] Tx PDU: NGSetupRequest
-2025-11-24T08:04:45.790080 [NGAP    ] [I] Rx PDU: NGSetupResponse
-2025-11-24T08:04:45.790097 [CU-CP   ] [I] Connected to AMF. Supported PLMNs: 20893
-2025-11-24T08:04:45.790108 [CU-CP   ] [I] CU-CP started successfully
-2025-11-24T08:04:48.560937 [CU-CP   ] [I] Added TNL connection to CU-UP 0
-2025-11-24T08:04:48.561064 [CU-CP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupRequest
-2025-11-24T08:04:48.561071 [CU-CP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupResponse
-2025-11-24T08:04:51.315938 [CU-CP   ] [I] Added TNL connection to DU 0
-2025-11-24T08:04:51.338317 [CU-CP-F1] [I] Rx PDU du=0 tid=0: F1SetupRequest
-2025-11-24T08:04:51.338458 [CU-CP-F1] [I] Tx PDU du=0 tid=0: F1SetupResponse
-2025-11-24T08:05:01.757500 [CU-CP-F1] [I] Rx PDU du=0 tid=1 du_ue=0: InitialULRRCMessageTransfer
-2025-11-24T08:05:01.757591 [CU-UEMNG] [I] ue=0 du_index=0 gnb_du_id=0 pci=1 rnti=0x4601 pcell_index=0: Created new CU-CP UE
-2025-11-24T08:05:01.757907 [CU-CP   ] [I] ue=0 c-rnti=0x4601: UE created
-2025-11-24T08:05:01.757916 [CU-CP-F1] [I] ue=0 du_ue=0 cu_ue=0: Added UE context
-2025-11-24T08:05:01.757931 [RRC     ] [I] ue=0 c-rnti=0x4601: CCCH UL rrcSetupRequest
-2025-11-24T08:05:01.757978 [PDCP    ] [I] ue=0 SRB1 DL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 discard_timer=infinity count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
-2025-11-24T08:05:01.758003 [PDCP    ] [I] ue=0 SRB1 UL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 t_reordering=infinity count_notify=3221225472 count_max=4294967294
-2025-11-24T08:05:01.758026 [RRC     ] [I] ue=0 c-rnti=0x4601: CCCH DL rrcSetup
-2025-11-24T08:05:01.758032 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:01.806357 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:01.806363 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=40 sn=0 count=0
-2025-11-24T08:05:01.806365 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=0
-2025-11-24T08:05:01.806387 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL rrcSetupComplete
-2025-11-24T08:05:01.806414 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0: InitialUEMessage
-2025-11-24T08:05:02.146195 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: DownlinkNASTransport
-2025-11-24T08:05:02.146276 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
-2025-11-24T08:05:02.146281 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=51 sn=0 count=0 is_retx=false
-2025-11-24T08:05:02.146291 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:02.190998 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:02.191003 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=30 sn=1 count=1
-2025-11-24T08:05:02.191006 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=1
-2025-11-24T08:05:02.191012 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
-2025-11-24T08:05:02.191023 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
-2025-11-24T08:05:02.325314 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: DownlinkNASTransport
-2025-11-24T08:05:02.325327 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
-2025-11-24T08:05:02.325335 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=28 sn=1 count=1 is_retx=false
-2025-11-24T08:05:02.325346 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:02.378844 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:02.378849 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=72 sn=2 count=2
-2025-11-24T08:05:02.378852 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=2
-2025-11-24T08:05:02.378858 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
-2025-11-24T08:05:02.378871 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
-2025-11-24T08:05:03.145357 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: InitialContextSetupRequest
-2025-11-24T08:05:03.145371 [CU-CP   ] [I] ue=0: "Initial Context Setup Routine" initialized
-2025-11-24T08:05:03.145388 [SEC     ] [I] K_gNB: 
-	59 c3 9c 63 42 8f 21 07 dd 91 52 df 21 82 33 27
-	b5 a6 b4 36 af 43 66 ca 99 d9 ec 10 7e e7 af 3a
-2025-11-24T08:05:03.145388 [SEC     ] [I] RRC Integrity Key: 
-	a8 a6 cc d3 fe 0b c4 2a d5 de ac de 44 c9 b4 d2
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:03.145389 [SEC     ] [I] RRC Encryption Key: 
-	79 f3 a5 5c a7 04 84 87 ee af 88 24 60 01 f8 91
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:03.145389 [SEC     ] [I] UP Integrity Key: 
-	7c 64 3d 26 87 ee 08 62 01 41 63 a3 55 73 28 08
-	11 8a b9 c2 c3 26 2c 9a 79 f7 3f cf 52 6c 6f 5f
-2025-11-24T08:05:03.145389 [SEC     ] [I] UP Encryption Key: 
-	c9 32 8a b0 d7 68 d2 65 03 9b 8f 54 c0 22 4c 99
-	31 e5 7c 1c 9f fc 5e 1e b8 c1 2e ab 90 eb f5 d0
-2025-11-24T08:05:03.145407 [PDCP    ] [I] ue=0 SRB1 UL: Security configured: NIA2 (on) NEA0 (off) domain=RRC
-2025-11-24T08:05:03.145407 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_int: 
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:03.145408 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_enc: 
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:03.145414 [PDCP    ] [I] ue=0 SRB1 DL: Security configured: NIA2 (on) NEA0 (off) domain=RRC
-2025-11-24T08:05:03.145415 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_int: 
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:03.145415 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_enc: 
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:03.145427 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=9 sn=2 count=2 is_retx=false
-2025-11-24T08:05:03.145430 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL securityModeCommand
-2025-11-24T08:05:03.145459 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextSetupRequest
-2025-11-24T08:05:03.148359 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextSetupResponse
-2025-11-24T08:05:03.350035 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:03.350045 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=8 sn=3 count=3
-2025-11-24T08:05:03.350052 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=3
-2025-11-24T08:05:03.350058 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL securityModeComplete
-2025-11-24T08:05:03.350075 [PDCP    ] [I] ue=0 SRB1 UL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
-2025-11-24T08:05:03.350075 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_int: 
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:03.350075 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_enc: 
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:03.350081 [PDCP    ] [I] ue=0 SRB1 DL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
-2025-11-24T08:05:03.350081 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_int: 
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:03.350082 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_enc: 
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:03.350106 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL ueCapabilityEnquiry
-2025-11-24T08:05:03.350109 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=14 sn=3 count=3 is_retx=false
-2025-11-24T08:05:03.350116 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:03.397405 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:03.397410 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=36 sn=4 count=4
-2025-11-24T08:05:03.397417 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=4
-2025-11-24T08:05:03.397424 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ueCapabilityInformation
-2025-11-24T08:05:03.397459 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
-2025-11-24T08:05:03.397464 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=60 sn=4 count=4 is_retx=false
-2025-11-24T08:05:03.397470 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:03.397735 [CU-CP   ] [I] ue=0: "Initial Context Setup Routine" finished successfully
-2025-11-24T08:05:03.397745 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: InitialContextSetupResponse
-2025-11-24T08:05:03.397847 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0: UERadioCapabilityInfoIndication
-2025-11-24T08:05:03.469681 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:03.469686 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=19 sn=5 count=5
-2025-11-24T08:05:03.469852 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=5
-2025-11-24T08:05:03.469862 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
-2025-11-24T08:05:03.469877 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
-2025-11-24T08:05:03.491189 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: DownlinkNASTransport
-2025-11-24T08:05:03.491202 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
-2025-11-24T08:05:03.491216 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=50 sn=5 count=5 is_retx=false
-2025-11-24T08:05:03.491227 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:03.491408 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:03.491413 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=50 sn=6 count=6
-2025-11-24T08:05:03.491418 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=6
-2025-11-24T08:05:03.491425 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
-2025-11-24T08:05:03.491436 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
-2025-11-24T08:05:03.694247 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:03.694253 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=19 sn=7 count=7
-2025-11-24T08:05:03.694261 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=7
-2025-11-24T08:05:03.694269 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
-2025-11-24T08:05:03.694284 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
-2025-11-24T08:05:05.198410 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: PDUSessionResourceSetupRequest
-2025-11-24T08:05:05.198688 [CU-CP-E1] [I] ue=0 cu_cp_ue=0: Created new E1AP UE context
-2025-11-24T08:05:05.199043 [CU-CP-E1] [I] Tx PDU ue=0 cu_cp_ue=0: BearerContextSetupRequest
-2025-11-24T08:05:05.225486 [CU-CP-E1] [I] Rx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextSetupResponse
-2025-11-24T08:05:05.225632 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextModificationRequest
-2025-11-24T08:05:05.253936 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextModificationResponse
-2025-11-24T08:05:05.253960 [CU-CP-F1] [I] ue=0 du_ue=0 cu_ue=0 proc="UE Context Modification Procedure": Procedure finished successfully
-2025-11-24T08:05:05.254165 [CU-CP-E1] [I] Tx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationRequest
-2025-11-24T08:05:05.255503 [CU-CP-E1] [I] Rx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationResponse
-2025-11-24T08:05:05.255778 [PDCP    ] [I] ue=0 SRB2 DL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 discard_timer=infinity count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
-2025-11-24T08:05:05.255795 [PDCP    ] [I] ue=0 SRB2 UL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 t_reordering=infinity count_notify=3221225472 count_max=4294967294
-2025-11-24T08:05:05.255803 [PDCP    ] [I] ue=0 SRB2 DL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
-2025-11-24T08:05:05.255803 [PDCP    ] [I] ue=0 SRB2 DL: 128 K_int: 
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:05.255803 [PDCP    ] [I] ue=0 SRB2 DL: 128 K_enc: 
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:05.255940 [PDCP    ] [I] ue=0 SRB2 UL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
-2025-11-24T08:05:05.255940 [PDCP    ] [I] ue=0 SRB2 UL: 128 K_int: 
-	78 3e c0 2e a9 b2 c2 76 e6 e7 1f 20 e1 b1 2c 23
-2025-11-24T08:05:05.255941 [PDCP    ] [I] ue=0 SRB2 UL: 128 K_enc: 
-	02 18 71 cf 7d 3e 9e 05 93 55 6f 67 67 5c 7b 9b
-2025-11-24T08:05:05.255975 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL rrcReconfiguration
-2025-11-24T08:05:05.255982 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=168 sn=6 count=6 is_retx=false
-2025-11-24T08:05:05.255991 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
-2025-11-24T08:05:05.298875 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
-2025-11-24T08:05:05.298880 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=8 sn=8 count=8
-2025-11-24T08:05:05.298886 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=8
-2025-11-24T08:05:05.298901 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL rrcReconfigurationComplete
-2025-11-24T08:05:05.299119 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: PDUSessionResourceSetupResponse
-2025-11-24T08:05:49.221891 [CU-CP-F1] [I] Rx PDU du=0 tid=2: F1RemovalRequest
-2025-11-24T08:05:49.221895 [CU-CP-F1] [I] F1 Removal: F1 Removal Request received, but there are still UEs connected to the DU. Resetting 1 UEs.
-2025-11-24T08:05:49.221906 [NGAP    ] [I] Tx PDU: NGReset
-2025-11-24T08:05:49.224785 [NGAP    ] [I] Rx PDU: NGResetAcknowledge
-2025-11-24T08:05:49.224801 [CU-CP-E1] [I] Tx PDU tid=0: Reset
-2025-11-24T08:05:49.232251 [CU-CP-E1] [I] Rx PDU tid=0: ResetAcknowledge
-2025-11-24T08:05:49.232254 [CU-CP-E1] [I] "E1 Reset Procedure" finished successfully
-2025-11-24T08:05:49.232538 [CU-CP   ] [I] ue=0: "UE Removal Routine" finished successfully
-2025-11-24T08:05:49.232546 [CU-CP-F1] [I] Tx PDU du=0 tid=2: F1RemovalResponse
-2025-11-24T08:05:49.233444 [CU-CP   ] [I] Removed DU 0
-2025-11-24T08:05:50.164428 [CU-CP-E1] [I] Rx PDU tid=1: E1ReleaseRequest
-2025-11-24T08:05:50.164433 [CU-CP-E1] [I] Tx PDU tid=1: E1ReleaseResponse
-2025-11-24T08:05:50.164474 [CU-CP-E1] [I] "E1 Release Procedure" finished successfully
-2025-11-24T08:05:50.164731 [CU-CP   ] [I] Removed CU-UP 0
-2025-11-24T08:05:51.131082 [CU-CP   ] [I] Stopping CU-CP...
-2025-11-24T08:05:51.131855 [CU-CP   ] [I] CU-CP stopped successfully.
-2025-11-24T08:05:51.131902 [CU-CP   ] [I] Closing PCAP files...
-2025-11-24T08:05:51.132495 [CU-CP   ] [I] PCAP files successfully closed.
+2026-05-26T12:28:02.297011 [CU-CP   ] [I] Built in Release mode using commit 050a2bb72e on branch HEAD
+2026-05-26T12:28:02.850899 [CU-CP   ] [W] Could not check scaling governor. filename=/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor error=No such file or directory
+2026-05-26T12:28:02.850913 [CU-CP   ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "ocudu_performance" script
+2026-05-26T12:28:02.851392 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=2, task_queue_size=2048, backoff_period=1000us and priority=96.
+2026-05-26T12:28:02.852070 [ALL     ] [E] Failed to open file /home/free5gc/srsran/srsRAN_Project/pcaps/cu_cp_ngap.pcap for writing: No such file or directory
+2026-05-26T12:28:02.852074 [ALL     ] [E] Failed to open file /home/free5gc/srsran/srsRAN_Project/pcaps/cu_cp_f1ap.pcap for writing: No such file or directory
+2026-05-26T12:28:02.852076 [ALL     ] [E] Failed to open file /home/free5gc/srsran/srsRAN_Project/pcaps/cu_cp_e1ap.pcap for writing: No such file or directory
+2026-05-26T12:28:02.852552 [CU-CP   ] [I] Starting CU-CP...
+2026-05-26T12:28:02.852694 [CU-CP   ] [I] N2: Connection to AMF on 127.0.0.18:38412 was established
+2026-05-26T12:28:02.852752 [NGAP    ] [I] Tx PDU: NGSetupRequest
+2026-05-26T12:28:02.852831 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:02.854256 [NGAP    ] [I] Rx PDU: NGSetupResponse
+2026-05-26T12:28:02.854276 [CU-CP   ] [I] Connected to AMF. Supported PLMNs: 20893 
+2026-05-26T12:28:02.854283 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:02.854308 [CU-CP   ] [I] CU-CP started successfully
+2026-05-26T12:28:06.244969 [CU-CP   ] [I] Added TNL connection to CU-UP 0
+2026-05-26T12:28:06.245055 [CU-CP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupRequest
+2026-05-26T12:28:06.245061 [CU-CP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupResponse
+2026-05-26T12:28:06.245118 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:06.245119 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:10.715644 [CU-CP   ] [I] Added TNL connection to DU 0
+2026-05-26T12:28:10.750016 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:10.750032 [CU-CP-F1] [I] Rx PDU du=0 tid=0: F1SetupRequest
+2026-05-26T12:28:10.750341 [CU-CP-F1] [I] Tx PDU du=0 tid=0: F1SetupResponse
+2026-05-26T12:28:10.750451 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.625715 [CU-CP-F1] [I] Rx PDU du=0 tid=1 du_ue=0: InitialULRRCMessageTransfer
+2026-05-26T12:28:18.625745 [CU-UEMNG] [I] ue=0 du_index=0 gnb_du_id=0 pci=1 rnti=0x4601 pcell_index=0: Created new CU-CP UE
+2026-05-26T12:28:18.625816 [CU-CP   ] [I] ue=0 c-rnti=0x4601: UE created
+2026-05-26T12:28:18.625831 [CU-CP-F1] [I] ue=0 du_ue=0 cu_ue=0: Added UE context
+2026-05-26T12:28:18.625842 [RRC     ] [I] ue=0 c-rnti=0x4601: CCCH UL rrcSetupRequest
+2026-05-26T12:28:18.625898 [PDCP    ] [I] ue=0 SRB1 DL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 discard_timer=infinity count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
+2026-05-26T12:28:18.625938 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.625941 [PDCP    ] [I] ue=0 SRB1 UL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 t_reordering=infinity count_notify=3221225472 count_max=4294967294
+2026-05-26T12:28:18.625970 [RRC     ] [I] ue=0 c-rnti=0x4601: CCCH DL rrcSetup
+2026-05-26T12:28:18.625979 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:18.626048 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.678271 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:18.678277 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=33 sn=0 count=0
+2026-05-26T12:28:18.678280 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=0
+2026-05-26T12:28:18.678309 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL rrcSetupComplete
+2026-05-26T12:28:18.678342 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0: InitialUEMessage
+2026-05-26T12:28:18.678386 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.678387 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.724893 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: DownlinkNASTransport
+2026-05-26T12:28:18.724920 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
+2026-05-26T12:28:18.724926 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=51 sn=0 count=0 is_retx=false
+2026-05-26T12:28:18.724936 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:18.724985 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.724986 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.764633 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:18.764640 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=30 sn=1 count=1
+2026-05-26T12:28:18.764642 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=1
+2026-05-26T12:28:18.764664 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
+2026-05-26T12:28:18.764690 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
+2026-05-26T12:28:18.764724 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.764724 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.782964 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: DownlinkNASTransport
+2026-05-26T12:28:18.782975 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
+2026-05-26T12:28:18.782981 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=28 sn=1 count=1 is_retx=false
+2026-05-26T12:28:18.782990 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:18.783036 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.783036 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.807352 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:18.807357 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=72 sn=2 count=2
+2026-05-26T12:28:18.807359 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=2
+2026-05-26T12:28:18.807366 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
+2026-05-26T12:28:18.807384 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
+2026-05-26T12:28:18.807417 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.807418 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.957438 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: InitialContextSetupRequest
+2026-05-26T12:28:18.957453 [CU-CP   ] [I] ue=0: "Initial Context Setup Routine" initialized
+2026-05-26T12:28:18.957458 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.957470 [SEC     ] [I] K_gNB: 
+	ea 50 eb 05 8c ae a6 6a af 9c 91 75 5b b6 7b ee
+	a6 9f 28 dc 77 7b 96 c3 bd 96 09 7c 4e 5b 80 a3
+2026-05-26T12:28:18.957471 [SEC     ] [I] RRC Integrity Key: 
+	6a 4e 68 c4 01 3f 41 e3 bb 03 d1 d6 8e 77 f2 8b
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:18.957471 [SEC     ] [I] RRC Encryption Key: 
+	86 78 c6 b8 78 f3 7e 15 41 fa 47 c6 23 44 84 d1
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:18.957471 [SEC     ] [I] UP Integrity Key: 
+	86 d5 00 f2 10 a6 f4 1e 48 6b aa 77 1a e3 ad 73
+	7a 3b b1 f6 87 04 9a 79 61 42 a3 76 0e d2 b6 d4
+2026-05-26T12:28:18.957471 [SEC     ] [I] UP Encryption Key: 
+	a7 7f 25 d6 ff 9a a4 a9 28 3a 93 cd 4e 25 64 6f
+	86 c3 7b 79 a2 e5 a1 3e a5 da 67 99 15 7c c5 bc
+2026-05-26T12:28:18.957488 [PDCP    ] [I] ue=0 SRB1 UL: Security configured: NIA2 (on) NEA0 (off) domain=RRC
+2026-05-26T12:28:18.957488 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_int: 
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:18.957488 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_enc: 
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:18.957493 [PDCP    ] [I] ue=0 SRB1 DL: Security configured: NIA2 (on) NEA0 (off) domain=RRC
+2026-05-26T12:28:18.957493 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_int: 
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:18.957493 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_enc: 
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:18.957506 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=9 sn=2 count=2 is_retx=false
+2026-05-26T12:28:18.957508 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL securityModeCommand
+2026-05-26T12:28:18.957542 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextSetupRequest
+2026-05-26T12:28:18.957626 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:18.962940 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextSetupResponse
+2026-05-26T12:28:18.962966 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.165815 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:19.165821 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=8 sn=3 count=3
+2026-05-26T12:28:19.165828 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=3
+2026-05-26T12:28:19.165833 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL securityModeComplete
+2026-05-26T12:28:19.165846 [PDCP    ] [I] ue=0 SRB1 UL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
+2026-05-26T12:28:19.165846 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_int: 
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:19.165846 [PDCP    ] [I] ue=0 SRB1 UL: 128 K_enc: 
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:19.165851 [PDCP    ] [I] ue=0 SRB1 DL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
+2026-05-26T12:28:19.165851 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_int: 
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:19.165851 [PDCP    ] [I] ue=0 SRB1 DL: 128 K_enc: 
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:19.165869 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL ueCapabilityEnquiry
+2026-05-26T12:28:19.165872 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=14 sn=3 count=3 is_retx=false
+2026-05-26T12:28:19.165879 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:19.165913 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.165914 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.203173 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:19.203178 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=36 sn=4 count=4
+2026-05-26T12:28:19.203186 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=4
+2026-05-26T12:28:19.203193 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ueCapabilityInformation
+2026-05-26T12:28:19.203232 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
+2026-05-26T12:28:19.203237 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=60 sn=4 count=4 is_retx=false
+2026-05-26T12:28:19.203238 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.203242 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:19.203277 [CU-CP   ] [I] ue=0: "Initial Context Setup Routine" finished successfully
+2026-05-26T12:28:19.203285 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: InitialContextSetupResponse
+2026-05-26T12:28:19.203299 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0: UERadioCapabilityInfoIndication
+2026-05-26T12:28:19.203306 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.203307 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.203307 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.258974 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:19.258979 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=19 sn=5 count=5
+2026-05-26T12:28:19.258986 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=5
+2026-05-26T12:28:19.258992 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
+2026-05-26T12:28:19.259005 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
+2026-05-26T12:28:19.259042 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.259043 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.409623 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: DownlinkNASTransport
+2026-05-26T12:28:19.409633 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL dlInformationTransfer
+2026-05-26T12:28:19.409643 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=50 sn=5 count=5 is_retx=false
+2026-05-26T12:28:19.409653 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:19.409695 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.409696 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.410094 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:19.410098 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=50 sn=6 count=6
+2026-05-26T12:28:19.410102 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=6
+2026-05-26T12:28:19.410109 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
+2026-05-26T12:28:19.410118 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
+2026-05-26T12:28:19.410142 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.410143 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.536917 [NGAP    ] [I] Rx PDU ue=0 ran_ue=0 amf_ue=1: PDUSessionResourceSetupRequest
+2026-05-26T12:28:19.537041 [CU-CP-E1] [I] ue=0 cu_cp_ue=0: Created new E1AP UE context
+2026-05-26T12:28:19.537141 [CU-CP-E1] [I] Tx PDU ue=0 cu_cp_ue=0: BearerContextSetupRequest
+2026-05-26T12:28:19.537198 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.537199 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.548284 [CU-CP-E1] [I] Rx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextSetupResponse
+2026-05-26T12:28:19.548646 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextModificationRequest
+2026-05-26T12:28:19.548766 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.548768 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.548786 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:19.548791 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=19 sn=7 count=7
+2026-05-26T12:28:19.548802 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=7
+2026-05-26T12:28:19.548810 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL ulInformationTransfer
+2026-05-26T12:28:19.548824 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.753564 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: UEContextModificationResponse
+2026-05-26T12:28:19.753572 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.753573 [CU-CP-F1] [I] ue=0 du_ue=0 cu_ue=0 proc="UE Context Modification Procedure": Procedure finished successfully
+2026-05-26T12:28:19.753743 [CU-CP-E1] [I] Tx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationRequest
+2026-05-26T12:28:19.753804 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.754639 [CU-CP-E1] [I] Rx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationResponse
+2026-05-26T12:28:19.754780 [PDCP    ] [I] ue=0 SRB2 DL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 discard_timer=infinity count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
+2026-05-26T12:28:19.754813 [PDCP    ] [I] ue=0 SRB2 UL: PDCP configured. rb_type=SRB rlc_mode=AM sn_size=12 t_reordering=infinity count_notify=3221225472 count_max=4294967294
+2026-05-26T12:28:19.754822 [PDCP    ] [I] ue=0 SRB2 DL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
+2026-05-26T12:28:19.754822 [PDCP    ] [I] ue=0 SRB2 DL: 128 K_int: 
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:19.754823 [PDCP    ] [I] ue=0 SRB2 DL: 128 K_enc: 
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:19.754826 [PDCP    ] [I] ue=0 SRB2 UL: Security configured: NIA2 (on) NEA0 (on) domain=RRC
+2026-05-26T12:28:19.754826 [PDCP    ] [I] ue=0 SRB2 UL: 128 K_int: 
+	51 c3 6a 5b 08 6b c0 5a 23 34 46 e9 3b b3 ca 95
+2026-05-26T12:28:19.754826 [PDCP    ] [I] ue=0 SRB2 UL: 128 K_enc: 
+	ed b1 61 b1 35 f8 bb e0 78 9b 81 85 24 2b dc 26
+2026-05-26T12:28:19.754844 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.754854 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH DL rrcReconfiguration
+2026-05-26T12:28:19.754860 [PDCP    ] [I] ue=0 SRB1 DL: TX PDU. type=data pdu_len=159 sn=6 count=6 is_retx=false
+2026-05-26T12:28:19.754866 [CU-CP-F1] [I] Tx PDU du=0 ue=0 cu_ue=0 du_ue=0: DLRRCMessageTransfer
+2026-05-26T12:28:19.754899 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.801616 [CU-CP-F1] [I] Rx PDU du=0 ue=0 cu_ue=0 du_ue=0: ULRRCMessageTransfer
+2026-05-26T12:28:19.801621 [PDCP    ] [I] ue=0 SRB1 UL: RX PDU. type=data pdu_len=8 sn=8 count=8
+2026-05-26T12:28:19.801629 [PDCP    ] [I] ue=0 SRB1 UL: RX SDU. count=8
+2026-05-26T12:28:19.801649 [RRC     ] [I] ue=0 c-rnti=0x4601: DCCH UL rrcReconfigurationComplete
+2026-05-26T12:28:19.801693 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: PDUSessionResourceSetupResponse
+2026-05-26T12:28:19.801736 [NGAP    ] [I] Tx PDU ue=0 ran_ue=0 amf_ue=1: UplinkNASTransport
+2026-05-26T12:28:19.801757 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.801757 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.801758 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.659750 [CU-CP-F1] [I] Rx PDU du=0 tid=2: F1RemovalRequest
+2026-05-26T12:32:35.659755 [CU-CP-F1] [I] F1 Removal: F1 Removal Request received, but there are still UEs connected to the DU. Resetting 1 UEs.
+2026-05-26T12:32:35.659766 [NGAP    ] [I] Tx PDU: NGReset
+2026-05-26T12:32:35.659798 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.659798 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.660847 [NGAP    ] [I] Rx PDU: NGResetAcknowledge
+2026-05-26T12:32:35.660861 [CU-CP-E1] [I] Tx PDU tid=0: Reset
+2026-05-26T12:32:35.660883 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.660884 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.665299 [CU-CP-E1] [I] Rx PDU tid=0: ResetAcknowledge
+2026-05-26T12:32:35.665302 [CU-CP-E1] [I] "E1 Reset Procedure" finished successfully
+2026-05-26T12:32:35.665420 [CU-CP   ] [I] ue=0: "UE Removal Routine" finished successfully
+2026-05-26T12:32:35.665428 [CU-CP-F1] [I] Tx PDU du=0 tid=2: F1RemovalResponse
+2026-05-26T12:32:35.665471 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.665471 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.666998 [CU-CP   ] [I] Removed DU 0
+2026-05-26T12:32:36.404837 [CU-CP-E1] [I] Rx PDU tid=1: E1ReleaseRequest
+2026-05-26T12:32:36.404844 [CU-CP-E1] [I] Tx PDU tid=1: E1ReleaseResponse
+2026-05-26T12:32:36.404873 [CU-CP-E1] [I] "E1 Release Procedure" finished successfully
+2026-05-26T12:32:36.404879 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:36.404880 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:36.405917 [CU-CP   ] [I] Removed CU-UP 0
+2026-05-26T12:32:37.020525 [CU-CP   ] [I] Stopping CU-CP...
+2026-05-26T12:32:37.028694 [CU-CP   ] [I] CU-CP stopped successfully
+2026-05-26T12:32:37.032841 [CU-CP   ] [I] Closing PCAP files...
+2026-05-26T12:32:37.035604 [CU-CP   ] [I] PCAP files successfully closed.
 (END)

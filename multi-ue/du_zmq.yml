@@ -1,0 +1,85 @@
+# Example config for a DU with ZMQ radio.
+
+f1ap:
+  cu_cp_addr: 127.0.10.1
+  bind_addr: 127.0.10.2
+
+f1u:
+  socket:
+    -
+      bind_addr: 127.0.10.2
+
+ru_sdr:
+  device_driver: zmq                # The RF driver name.
+  device_args: tx_port=tcp://127.0.0.1:2000,rx_port=tcp://127.0.0.1:2001,base_srate=11.52e6,verbose # Optionally pass arguments to the selected RF driver.
+  srate: 11.52                      # RF sample rate might need to be adjusted according to selected bandwidth.
+  tx_gain: 75                       # Transmit gain of the RF might need to adjusted to the given situation.
+  rx_gain: 75                       # Receive gain of the RF might need to adjusted to the given situation.
+
+cell_cfg:
+  dl_arfcn: 368500                  # ARFCN of the downlink carrier (center frequency).
+  band: 3                           # The NR band.
+  channel_bandwidth_MHz: 10         # Bandwith in MHz. Number of PRBs will be automatically derived.
+  common_scs: 15                    # Subcarrier spacing in kHz used for data.
+  plmn: "20893"                     # PLMN broadcasted by the gNB.
+  tac: 1                            # Tracking area code (needs to match the core configuration).
+  pci: 1
+  scheduler:
+    policy:
+      qos_sched:
+        # Higher fairness = more consistent scheduling = lower jitter
+        # Value 5.0 balances throughput vs fairness for mixed traffic
+        pf_fairness_coeff: 2.0
+        prio_enabled: true
+        pdb_enabled: true
+        gbr_enabled: true
+  pdcch:
+    common:
+      ss0_index: 0                  # Set search space zero index to match srsUE capabilities
+      coreset0_index: 6            # Set search CORESET Zero index to match srsUE capabilities
+    dedicated:
+      ss2_type: common              # Use common search space for lower latency
+      dci_format_0_1_and_1_1: false # Use fallback DCI (0_0/1_0) for faster scheduling
+  prach:
+    prach_config_index: 1           # Sets PRACH config to match what is expected by srsUE
+    total_nof_ra_preambles: 64      # Sets number of available PRACH preambles
+    nof_cb_preambles_per_ssb: 64    # Sets the number of contention based preambles per SSB.
+  pdsch:
+    mcs_table: qam64                # Sets PDSCH MCS to 64 QAM
+  pusch:
+    mcs_table: qam64                # Sets PUSCH MCS to 64 QAM
+  
+  slicing:
+    - # Slice 1: eMBB (needs guaranteed resources)
+      sst: 1
+      sd: 66051 # 0x010203 in decimal
+      sched_cfg:
+        # Set min=0 to allow full utilization when alone
+        min_prb_policy_ratio: 0
+        # Allow eMBB to use 50% max to leave headroom for URLLC
+        max_prb_policy_ratio: 50
+        # LOWER priority value (0-255 scale, higher number = higher priority)
+        priority: 10
+
+    - # Slice 2: URLLC (low latency priority)
+      sst: 1
+      sd: 1122867 # 0x112233 in decimal
+      sched_cfg:
+        # No minimum - takes what it needs when active
+        min_prb_policy_ratio: 0
+        # Can burst up to 100% for low latency
+        max_prb_policy_ratio: 100
+        # HIGHER priority value = scheduled first (0-255 scale)
+        priority: 200
+
+log:
+  filename: /home/free5gc/srsran-config/multi-ue/logs/du_zmq.log
+  all_level: info
+
+pcap:
+  mac_enable: true
+  mac_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_mac.pcap
+  f1ap_enable: true
+  f1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_f1ap.pcap
+  f1u_enable: true
+  f1u_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_f1u.pcap  

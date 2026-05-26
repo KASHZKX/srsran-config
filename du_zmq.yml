@@ -38,7 +38,7 @@ cell_cfg:
     mcs_table: qam64                # Sets PUSCH MCS to 64 QAM
 
 log:
-  filename: /home/free5gc/srsran/srsRAN_Project/logs/du.log
+  filename: /home/free5gc/srsran-config/logs/du.log
   all_level: info
 
 pcap:

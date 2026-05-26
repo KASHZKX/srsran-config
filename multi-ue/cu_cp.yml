@@ -1,0 +1,34 @@
+# Example config for a locally deployed CU-CP listening on the localhost interface for a CU-UP and DU connection
+
+cu_cp:
+  request_pdu_session_timeout: 20
+  inactivity_timer: 7200
+  amf:
+    addr: 127.0.0.18               # The address or hostname of the AMF.
+    port: 38412
+    bind_addr: 127.0.0.1            # A local IP that the gNB binds to for traffic from the AMF.
+    supported_tracking_areas:
+      - tac: 1
+        plmn_list:
+          - plmn: "20893"
+            tai_slice_support_list:
+              - sst: 1
+                sd: "010203"
+              - sst: 1
+                sd: "112233"
+  e1ap:
+    bind_addr: 127.0.20.1
+  f1ap:
+    bind_addr: 127.0.10.1
+
+log:
+  filename: /home/free5gc/srsran-config/multi-ue/logs/cu_cp.log
+  all_level: info
+
+pcap:
+  ngap_enable: true
+  ngap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/cu_cp_ngap.pcap
+  f1ap_enable: true
+  f1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/cu_cp_f1ap.pcap
+  e1ap_enable: true
+  e1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/cu_cp_e1ap.pcap

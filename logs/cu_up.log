@@ -1,79 +1,259 @@
-2025-11-24T08:04:47.916155 [CU-UP   ] [I] Built in Release mode using commit 8e4f0bed05 on branch main
-2025-11-24T08:04:48.537390 [CU-UP   ] [W] Could not check scaling governor. filename=/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor error=No such file or directory
-2025-11-24T08:04:48.537402 [CU-UP   ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "srsran_performance" script
-2025-11-24T08:04:48.538081 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=2, task_queue_size=2048, backoff_period=50us and priority=96.
-2025-11-24T08:04:48.556728 [GTPU    ] [I] GTP-U demux. queue_size=8192 batch_size=256 warn_on_drop=true test_mode=false
-2025-11-24T08:04:48.557289 [GTPU    ] [I] GTP-U demux. queue_size=2046 batch_size=256 warn_on_drop=false test_mode=false
-2025-11-24T08:04:48.557409 [GTPU    ] [I] Tunnel added. teid=0x000000
-2025-11-24T08:04:48.560585 [CU-UP   ] [I] CU-UP starting...
-2025-11-24T08:04:48.560895 [CU-UP-E1] [I] E1: TNL connection to CU-CP on 127.0.20.1:38462 accepted
-2025-11-24T08:04:48.560931 [CU-UP-E1] [I] Sending E1SetupRequest
-2025-11-24T08:04:48.560936 [CU-UP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupRequest
-2025-11-24T08:04:48.561150 [CU-UP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupResponse
-2025-11-24T08:04:48.561151 [CU-UP-E1] [I] "E1AP CU-UP Setup Procedure" finalized
-2025-11-24T08:04:48.561166 [CU-UP   ] [I] CU-UP started successfully
-2025-11-24T08:05:05.199439 [CU-UP-E1] [I] Rx PDU cu_cp_ue=0: BearerContextSetupRequest
-2025-11-24T08:05:05.199565 [CU-UP   ] [I] ue=0: UE created
-2025-11-24T08:05:05.200539 [GTPU    ] [I] ue=0 DL teid=0x000001: GTPU NGU Rx configured. node=ngu local_teid=0x000001 t_reordering=0ms warn_on_drop=false ignore_ue_ambr=true
-2025-11-24T08:05:05.200547 [GTPU    ] [I] ue=0 UL teid=0x000002: GTPU NGU Tx configured. peer_teid=0x000002 peer_addr=127.0.0.8 peer_port=2152
-2025-11-24T08:05:05.201160 [GTPU    ] [I] Tunnel added. teid=0x000001
-2025-11-24T08:05:05.201187 [SDAP    ] [I] ue=0 psi=1: Mapping QFI=1 DRB1 default_drb=true hdr_ul=absent hdr_dl=absent
-2025-11-24T08:05:05.204612 [PDCP    ] [I] ue=0 DRB1 DL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 discard_timer=infinity count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
-2025-11-24T08:05:05.208446 [PDCP    ] [I] ue=0 DRB1 UL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 t_reordering=220 count_notify=3221225472 count_max=4294967294
-2025-11-24T08:05:05.208456 [PDCP    ] [I] ue=0 DRB1 DL: Security configured: NIA2 (off) NEA0 (on) domain=UP
-2025-11-24T08:05:05.208457 [PDCP    ] [I] ue=0 DRB1 DL: 128 K_int: 
-	11 8a b9 c2 c3 26 2c 9a 79 f7 3f cf 52 6c 6f 5f
-2025-11-24T08:05:05.208457 [PDCP    ] [I] ue=0 DRB1 DL: 128 K_enc: 
-	31 e5 7c 1c 9f fc 5e 1e b8 c1 2e ab 90 eb f5 d0
-2025-11-24T08:05:05.208458 [PDCP    ] [I] ue=0 DRB1 UL: Security configured: NIA2 (off) NEA0 (on) domain=UP
-2025-11-24T08:05:05.208458 [PDCP    ] [I] ue=0 DRB1 UL: 128 K_int: 
-	11 8a b9 c2 c3 26 2c 9a 79 f7 3f cf 52 6c 6f 5f
-2025-11-24T08:05:05.208459 [PDCP    ] [I] ue=0 DRB1 UL: 128 K_enc: 
-	31 e5 7c 1c 9f fc 5e 1e b8 c1 2e ab 90 eb f5 d0
-2025-11-24T08:05:05.208461 [CU-F1-U ] [I] Creating CU gateway local bearer with UL GTP Tunnel=0x000001
-2025-11-24T08:05:05.208551 [GTPU    ] [I] ue=0 RX teid=0x000001: GTPU NR-U Rx configured. node=cu_up local_teid=0x000001
-2025-11-24T08:05:05.209715 [GTPU    ] [I] Tunnel added. teid=0x000001
-2025-11-24T08:05:05.210700 [CU-F1-U ] [I] ue=0 DRB1 ul-teid=0x000001: F1-U bearer configured. warn_on_drop=true dl_t_notif_timer=10ms queue_size=8192 batch_size=256
-2025-11-24T08:05:05.210725 [SDAP    ] [I] ue=0 psi=1: Mapping QFI=2 DRB2 default_drb=true hdr_ul=absent hdr_dl=absent
-2025-11-24T08:05:05.216315 [PDCP    ] [I] ue=0 DRB2 DL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 discard_timer=300 count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
-2025-11-24T08:05:05.219478 [PDCP    ] [I] ue=0 DRB2 UL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 t_reordering=100 count_notify=3221225472 count_max=4294967294
-2025-11-24T08:05:05.219485 [PDCP    ] [I] ue=0 DRB2 DL: Security configured: NIA2 (off) NEA0 (on) domain=UP
-2025-11-24T08:05:05.219485 [PDCP    ] [I] ue=0 DRB2 DL: 128 K_int: 
-	11 8a b9 c2 c3 26 2c 9a 79 f7 3f cf 52 6c 6f 5f
-2025-11-24T08:05:05.219485 [PDCP    ] [I] ue=0 DRB2 DL: 128 K_enc: 
-	31 e5 7c 1c 9f fc 5e 1e b8 c1 2e ab 90 eb f5 d0
-2025-11-24T08:05:05.219488 [PDCP    ] [I] ue=0 DRB2 UL: Security configured: NIA2 (off) NEA0 (on) domain=UP
-2025-11-24T08:05:05.219488 [PDCP    ] [I] ue=0 DRB2 UL: 128 K_int: 
-	11 8a b9 c2 c3 26 2c 9a 79 f7 3f cf 52 6c 6f 5f
-2025-11-24T08:05:05.219488 [PDCP    ] [I] ue=0 DRB2 UL: 128 K_enc: 
-	31 e5 7c 1c 9f fc 5e 1e b8 c1 2e ab 90 eb f5 d0
-2025-11-24T08:05:05.219490 [CU-F1-U ] [I] Creating CU gateway local bearer with UL GTP Tunnel=0x000002
-2025-11-24T08:05:05.219739 [GTPU    ] [I] ue=0 RX teid=0x000002: GTPU NR-U Rx configured. node=cu_up local_teid=0x000002
-2025-11-24T08:05:05.221680 [GTPU    ] [I] Tunnel added. teid=0x000002
-2025-11-24T08:05:05.224549 [CU-F1-U ] [I] ue=0 DRB2 ul-teid=0x000002: F1-U bearer configured. warn_on_drop=true dl_t_notif_timer=10ms queue_size=8192 batch_size=256
-2025-11-24T08:05:05.225119 [CU-UP-E1] [I] Tx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextSetupResponse
-2025-11-24T08:05:05.245688 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
-2025-11-24T08:05:05.254559 [CU-UP-E1] [I] Rx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationRequest
-2025-11-24T08:05:05.254699 [CU-UP   ] [I] ue=0: Attaching dl_teid={Addr=127.0.10.2 TEID=0x000001} to F1-U tunnel with ul_teid=0x000001
-2025-11-24T08:05:05.254729 [GTPU    ] [I] ue=0 TX teid=0x000001: GTPU NR-U Tx configured. peer_teid=0x000001 peer_addr=127.0.10.2 peer_port=2152
-2025-11-24T08:05:05.254729 [CU-F1-U ] [I] Connected CU bearer to DU bearer. UL GTP Tunnel={Addr=127.0.10.1 TEID=0x000001}, DL GTP Tunnel={Addr=127.0.10.2 TEID=0x000001}
-2025-11-24T08:05:05.254730 [CU-UP   ] [I] ue=0: Modified DRB1. psi=1 f1u_teid=0x000001
-2025-11-24T08:05:05.255133 [CU-UP   ] [I] ue=0: Attaching dl_teid={Addr=127.0.10.2 TEID=0x000002} to F1-U tunnel with ul_teid=0x000002
-2025-11-24T08:05:05.255167 [GTPU    ] [I] ue=0 TX teid=0x000002: GTPU NR-U Tx configured. peer_teid=0x000002 peer_addr=127.0.10.2 peer_port=2152
-2025-11-24T08:05:05.255168 [CU-F1-U ] [I] Connected CU bearer to DU bearer. UL GTP Tunnel={Addr=127.0.10.1 TEID=0x000002}, DL GTP Tunnel={Addr=127.0.10.2 TEID=0x000002}
-2025-11-24T08:05:05.255168 [CU-UP   ] [I] ue=0: Modified DRB2. psi=1 f1u_teid=0x000002
-2025-11-24T08:05:05.255249 [CU-UP-E1] [I] Tx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationResponse
-2025-11-24T08:05:05.255364 [GTPU    ] [I] ue=0 RX teid=0x000002: RX DL data delivery status
-2025-11-24T08:05:49.224957 [CU-UP-E1] [I] Rx PDU tid=0: Reset
-2025-11-24T08:05:49.224968 [GTPU    ] [I] Tunnel removed. teid=0x000001
-2025-11-24T08:05:49.225789 [GTPU    ] [I] Tunnel removed. teid=0x000001
-2025-11-24T08:05:49.226404 [GTPU    ] [I] Tunnel removed. teid=0x000002
-2025-11-24T08:05:49.226406 [CU-UP   ] [I] ue=0: Disconnecting PDU session with psi=1
-2025-11-24T08:05:49.231724 [CU-UP-E1] [I] Tx PDU tid=0: ResetAcknowledge
-2025-11-24T08:05:50.164274 [CU-UP-E1] [I] Tx PDU tid=1: E1ReleaseRequest
-2025-11-24T08:05:50.164537 [CU-UP-E1] [I] Rx PDU tid=1: E1ReleaseResponse
-2025-11-24T08:05:50.164704 [CU-UP-E1] [I] E1AP CU-UP Release Procedure: E1 TNL association shut down
-2025-11-24T08:05:50.164811 [CU-UP   ] [I] CU-UP stopped successfully
-2025-11-24T08:05:50.164997 [CU-UP   ] [I] Closing PCAP files...
-2025-11-24T08:05:50.165350 [CU-UP   ] [I] PCAP files successfully closed.
+2026-05-26T12:28:05.639606 [CU-UP   ] [I] Built in Release mode using commit 050a2bb72e on branch HEAD
+2026-05-26T12:28:06.184088 [CU-UP   ] [W] Could not check scaling governor. filename=/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor error=No such file or directory
+2026-05-26T12:28:06.184099 [CU-UP   ] [W] DRM KMS polling is enabled, which may hinder performance. You can disable it using the "ocudu_performance" script
+2026-05-26T12:28:06.184593 [CONFIG  ] [I] Worker pool "main_pool" instantiated with #workers=2, task_queue_size=2048, backoff_period=50us and priority=96.
+2026-05-26T12:28:06.203210 [ALL     ] [E] Failed to open file /home/free5gc/srsran/srsRAN_Project/pcaps/cu_up_n3.pcap for writing: No such file or directory
+2026-05-26T12:28:06.203212 [ALL     ] [E] Failed to open file /home/free5gc/srsran/srsRAN_Project/pcaps/cu_up_f1u.pcap for writing: No such file or directory
+2026-05-26T12:28:06.203214 [ALL     ] [E] Failed to open file /home/free5gc/srsran/srsRAN_Project/pcaps/cu_up_e1ap.pcap for writing: No such file or directory
+2026-05-26T12:28:06.203228 [GTPU    ] [I] GTP-U demux. queue_size=8192 batch_size=256 warn_on_drop=true test_mode=false
+2026-05-26T12:28:06.203785 [GTPU    ] [I] GTP-U demux. queue_size=2046 batch_size=256 warn_on_drop=false test_mode=false
+2026-05-26T12:28:06.203885 [GTPU    ] [I] Tunnel added. teid=0x000000
+2026-05-26T12:28:06.243454 [CU-UP   ] [I] CU-UP starting...
+2026-05-26T12:28:06.243660 [CU-UP-E1] [I] E1: TNL connection to CU-CP accepted (configured addrs 127.0.20.1, port 38462)
+2026-05-26T12:28:06.243728 [CU-UP-E1] [I] Sending E1SetupRequest
+2026-05-26T12:28:06.243733 [CU-UP-E1] [I] Tx PDU tid=0: GNB-CU-UP-E1SetupRequest
+2026-05-26T12:28:06.243760 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:06.245882 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:06.245885 [CU-UP-E1] [I] Rx PDU tid=0: GNB-CU-UP-E1SetupResponse
+2026-05-26T12:28:06.245890 [CU-UP-E1] [I] "E1AP CU-UP Setup Procedure" finalized
+2026-05-26T12:28:06.245900 [CU-UP   ] [I] CU-UP started successfully
+2026-05-26T12:28:19.537324 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.537328 [CU-UP-E1] [I] Rx PDU cu_cp_ue=0: BearerContextSetupRequest
+2026-05-26T12:28:19.537411 [CU-UP   ] [I] ue=0: UE created
+2026-05-26T12:28:19.537677 [GTPU    ] [I] ue=0 DL teid=0x000001: GTPU NGU Rx configured. node=ngu local_teid=0x000001 t_reordering=0ms warn_on_drop=false ignore_ue_ambr=true
+2026-05-26T12:28:19.537702 [GTPU    ] [I] ue=0 UL teid=0x000002: GTPU NGU Tx configured. peer_teid=0x000002 peer_addr=127.0.0.8 peer_port=2152
+2026-05-26T12:28:19.537816 [GTPU    ] [I] Tunnel added. teid=0x000001
+2026-05-26T12:28:19.537845 [SDAP    ] [I] ue=0 psi=1: Mapping QFI=1 DRB1 default_drb=true hdr_ul=absent hdr_dl=absent
+2026-05-26T12:28:19.540078 [PDCP    ] [I] ue=0 DRB1 DL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 discard_timer=infinity count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
+2026-05-26T12:28:19.541432 [PDCP    ] [I] ue=0 DRB1 UL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 t_reordering=220 count_notify=3221225472 count_max=4294967294
+2026-05-26T12:28:19.541438 [PDCP    ] [I] ue=0 DRB1 DL: Security configured: NIA2 (off) NEA0 (on) domain=UP
+2026-05-26T12:28:19.541438 [PDCP    ] [I] ue=0 DRB1 DL: 128 K_int: 
+	7a 3b b1 f6 87 04 9a 79 61 42 a3 76 0e d2 b6 d4
+2026-05-26T12:28:19.541439 [PDCP    ] [I] ue=0 DRB1 DL: 128 K_enc: 
+	86 c3 7b 79 a2 e5 a1 3e a5 da 67 99 15 7c c5 bc
+2026-05-26T12:28:19.541440 [PDCP    ] [I] ue=0 DRB1 UL: Security configured: NIA2 (off) NEA0 (on) domain=UP
+2026-05-26T12:28:19.541440 [PDCP    ] [I] ue=0 DRB1 UL: 128 K_int: 
+	7a 3b b1 f6 87 04 9a 79 61 42 a3 76 0e d2 b6 d4
+2026-05-26T12:28:19.541440 [PDCP    ] [I] ue=0 DRB1 UL: 128 K_enc: 
+	86 c3 7b 79 a2 e5 a1 3e a5 da 67 99 15 7c c5 bc
+2026-05-26T12:28:19.541443 [CU-F1-U ] [I] Creating CU gateway local bearer with UL GTP Tunnel=0x000001
+2026-05-26T12:28:19.541494 [GTPU    ] [I] ue=0 RX teid=0x000001: GTPU NR-U Rx configured. node=cu_up local_teid=0x000001
+2026-05-26T12:28:19.541920 [GTPU    ] [I] Tunnel added. teid=0x000001
+2026-05-26T12:28:19.542390 [CU-F1-U ] [I] ue=0 DRB1 ul-teid=0x000001: F1-U bearer configured. warn_on_drop=true dl_t_notif_timer=5ms queue_size=8192 batch_size=256
+2026-05-26T12:28:19.542413 [SDAP    ] [I] ue=0 psi=1: Mapping QFI=2 DRB2 default_drb=true hdr_ul=absent hdr_dl=absent
+2026-05-26T12:28:19.544376 [PDCP    ] [I] ue=0 DRB2 DL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 discard_timer=300 count_notify=3221225472 count_max=4294967294 warn_on_drop=false test_mode=false
+2026-05-26T12:28:19.546277 [PDCP    ] [I] ue=0 DRB2 UL: PDCP configured. rb_type=DRB rlc_mode=AM sn_size=18 t_reordering=100 count_notify=3221225472 count_max=4294967294
+2026-05-26T12:28:19.546285 [PDCP    ] [I] ue=0 DRB2 DL: Security configured: NIA2 (off) NEA0 (on) domain=UP
+2026-05-26T12:28:19.546285 [PDCP    ] [I] ue=0 DRB2 DL: 128 K_int: 
+	7a 3b b1 f6 87 04 9a 79 61 42 a3 76 0e d2 b6 d4
+2026-05-26T12:28:19.546285 [PDCP    ] [I] ue=0 DRB2 DL: 128 K_enc: 
+	86 c3 7b 79 a2 e5 a1 3e a5 da 67 99 15 7c c5 bc
+2026-05-26T12:28:19.546287 [PDCP    ] [I] ue=0 DRB2 UL: Security configured: NIA2 (off) NEA0 (on) domain=UP
+2026-05-26T12:28:19.546287 [PDCP    ] [I] ue=0 DRB2 UL: 128 K_int: 
+	7a 3b b1 f6 87 04 9a 79 61 42 a3 76 0e d2 b6 d4
+2026-05-26T12:28:19.546288 [PDCP    ] [I] ue=0 DRB2 UL: 128 K_enc: 
+	86 c3 7b 79 a2 e5 a1 3e a5 da 67 99 15 7c c5 bc
+2026-05-26T12:28:19.546290 [CU-F1-U ] [I] Creating CU gateway local bearer with UL GTP Tunnel=0x000002
+2026-05-26T12:28:19.546352 [GTPU    ] [I] ue=0 RX teid=0x000002: GTPU NR-U Rx configured. node=cu_up local_teid=0x000002
+2026-05-26T12:28:19.546935 [GTPU    ] [I] Tunnel added. teid=0x000002
+2026-05-26T12:28:19.547370 [CU-F1-U ] [I] ue=0 DRB2 ul-teid=0x000002: F1-U bearer configured. warn_on_drop=true dl_t_notif_timer=5ms queue_size=8192 batch_size=256
+2026-05-26T12:28:19.547436 [CU-UP-E1] [I] Tx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextSetupResponse
+2026-05-26T12:28:19.547492 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.565269 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:28:19.565278 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.567090 [GTPU    ] [I] ue=0 RX teid=0x000002: RX DL data delivery status
+2026-05-26T12:28:19.567097 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.753927 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:28:19.753931 [CU-UP-E1] [I] Rx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationRequest
+2026-05-26T12:28:19.754046 [CU-UP   ] [I] ue=0: Attaching dl_teid={Addr=127.0.10.2 TEID=0x000001} to F1-U tunnel with ul_teid=0x000001
+2026-05-26T12:28:19.754070 [GTPU    ] [I] ue=0 TX teid=0x000001: GTPU NR-U Tx configured. peer_teid=0x000001 peer_addr=127.0.10.2 peer_port=2152
+2026-05-26T12:28:19.754070 [CU-F1-U ] [I] Connected CU bearer to DU bearer. UL GTP Tunnel={Addr=127.0.10.1 TEID=0x000001}, DL GTP Tunnel={Addr=127.0.10.2 TEID=0x000001}
+2026-05-26T12:28:19.754071 [CU-UP   ] [I] ue=0: Modified DRB1. psi=1 f1u_teid=0x000001
+2026-05-26T12:28:19.754082 [CU-UP   ] [I] ue=0: Attaching dl_teid={Addr=127.0.10.2 TEID=0x000002} to F1-U tunnel with ul_teid=0x000002
+2026-05-26T12:28:19.754093 [GTPU    ] [I] ue=0 TX teid=0x000002: GTPU NR-U Tx configured. peer_teid=0x000002 peer_addr=127.0.10.2 peer_port=2152
+2026-05-26T12:28:19.754093 [CU-F1-U ] [I] Connected CU bearer to DU bearer. UL GTP Tunnel={Addr=127.0.10.1 TEID=0x000002}, DL GTP Tunnel={Addr=127.0.10.2 TEID=0x000002}
+2026-05-26T12:28:19.754094 [CU-UP   ] [I] ue=0: Modified DRB2. psi=1 f1u_teid=0x000002
+2026-05-26T12:28:19.754138 [CU-UP-E1] [I] Tx PDU ue=0 cu_cp_ue=0 cu_up_ue=0: BearerContextModificationResponse
+2026-05-26T12:28:19.754200 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.171619 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:29:44.171627 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=0 count=0
+2026-05-26T12:29:44.171636 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.171640 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=0
+2026-05-26T12:29:44.171644 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:29:44.171655 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.174794 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:29:44.174798 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.174801 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=0 count=0 is_retx=false
+2026-05-26T12:29:44.174804 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:29:44.174808 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.183321 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:44.183336 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.196082 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:44.196096 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.463433 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:29:44.463448 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=1 count=1
+2026-05-26T12:29:44.463456 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.463459 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=1
+2026-05-26T12:29:44.463462 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:29:44.463465 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.466370 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:29:44.466376 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.466381 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=1 count=1 is_retx=false
+2026-05-26T12:29:44.466385 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:29:44.466389 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.475904 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:44.475913 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.489597 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:44.489609 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.778420 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:29:44.778428 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=2 count=2
+2026-05-26T12:29:44.778435 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.778438 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=2
+2026-05-26T12:29:44.778441 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:29:44.778444 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.781499 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:29:44.781524 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.781526 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=2 count=2 is_retx=false
+2026-05-26T12:29:44.781531 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:29:44.781538 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.790189 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:44.790201 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:44.822404 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:44.822424 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:45.065679 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:29:45.065686 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:45.065702 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=3 count=3
+2026-05-26T12:29:45.065714 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=3
+2026-05-26T12:29:45.065717 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:29:45.065724 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:45.069512 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:29:45.069522 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:45.069525 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=3 count=3 is_retx=false
+2026-05-26T12:29:45.069529 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:29:45.069532 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:45.071397 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:45.071412 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:29:45.088705 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:29:45.088719 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:45.884779 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:31:45.884786 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=4 count=4
+2026-05-26T12:31:45.884789 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:45.884796 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=4
+2026-05-26T12:31:45.884801 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:31:45.884808 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:45.887917 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:31:45.887925 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:45.887934 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=4 count=4 is_retx=false
+2026-05-26T12:31:45.887938 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:31:45.887943 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:45.895634 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:31:45.895646 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:45.934465 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:31:45.934495 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:46.877808 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:31:46.877815 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=5 count=5
+2026-05-26T12:31:46.877822 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:46.877825 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=5
+2026-05-26T12:31:46.877828 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:31:46.877831 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:46.880649 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:31:46.880656 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:46.880660 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=5 count=5 is_retx=false
+2026-05-26T12:31:46.880664 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:31:46.880666 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:46.883218 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:31:46.883227 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:46.926341 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:31:46.926354 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:47.873283 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:31:47.873290 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=6 count=6
+2026-05-26T12:31:47.873296 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=6
+2026-05-26T12:31:47.873297 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:47.873299 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:31:47.873305 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:47.877343 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:31:47.877351 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:47.877354 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=6 count=6 is_retx=false
+2026-05-26T12:31:47.877357 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:31:47.877360 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:47.880087 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:31:47.880096 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:31:47.921186 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:31:47.921198 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:03.726257 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:32:03.726265 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=7 count=7
+2026-05-26T12:32:03.726272 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:03.726275 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=7
+2026-05-26T12:32:03.726278 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:32:03.726281 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:03.729328 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:32:03.729328 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:03.729334 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=7 count=7 is_retx=false
+2026-05-26T12:32:03.729340 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:32:03.729344 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:03.736386 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:03.736398 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:03.747452 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:03.747465 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:04.727746 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:32:04.727752 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=8 count=8
+2026-05-26T12:32:04.727759 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:04.727762 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=8
+2026-05-26T12:32:04.727766 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:32:04.727770 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:04.730872 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:32:04.730879 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:04.730882 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=8 count=8 is_retx=false
+2026-05-26T12:32:04.730885 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:32:04.730888 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:04.734101 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:04.734110 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:04.775995 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:04.776007 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:05.743919 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:32:05.743927 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=9 count=9
+2026-05-26T12:32:05.743934 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:05.743937 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=9
+2026-05-26T12:32:05.743940 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:32:05.743944 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:05.746871 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:32:05.746877 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:05.746877 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=9 count=9 is_retx=false
+2026-05-26T12:32:05.746881 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:32:05.746891 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:05.749863 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:05.749871 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:05.765425 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:05.765438 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:06.744223 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status. t_pdu_len=87
+2026-05-26T12:32:06.744228 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:06.744230 [PDCP    ] [I] ue=0 DRB1 UL: RX PDU. type=data pdu_len=87 sn=10 count=10
+2026-05-26T12:32:06.744236 [PDCP    ] [I] ue=0 DRB1 UL: RX SDU. count=10
+2026-05-26T12:32:06.744239 [GTPU    ] [I] ue=0 UL teid=0x000002: TX PDU. pdu_len=100 teid=0x000002 qfi=QFI=1
+2026-05-26T12:32:06.744245 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:06.747359 [GTPU    ] [I] ue=0 DL teid=0x000001: RX SDU. sdu_len=84 qos_flow=QFI=1 sn={na}
+2026-05-26T12:32:06.747364 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:06.747367 [PDCP    ] [I] ue=0 DRB1 DL: TX PDU. type=data pdu_len=87 sn=10 count=10 is_retx=false
+2026-05-26T12:32:06.747370 [GTPU    ] [I] ue=0 TX teid=0x000001: TX PDU. pdu_len=107 teid=0x000001
+2026-05-26T12:32:06.747373 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:06.750133 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:06.750141 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:06.770717 [GTPU    ] [I] ue=0 RX teid=0x000001: RX DL data delivery status
+2026-05-26T12:32:06.770734 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.661009 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:35.661014 [CU-UP-E1] [I] Rx PDU tid=0: Reset
+2026-05-26T12:32:35.661027 [GTPU    ] [I] Tunnel removed. teid=0x000001
+2026-05-26T12:32:35.661404 [GTPU    ] [I] Tunnel removed. teid=0x000001
+2026-05-26T12:32:35.661782 [GTPU    ] [I] Tunnel removed. teid=0x000002
+2026-05-26T12:32:35.661842 [CU-UP   ] [I] ue=0: Disconnecting PDU session with psi=1
+2026-05-26T12:32:35.664848 [CU-UP-E1] [I] Tx PDU tid=0: ResetAcknowledge
+2026-05-26T12:32:35.664872 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:36.404251 [CU-UP-E1] [I] Tx PDU tid=1: E1ReleaseRequest
+2026-05-26T12:32:36.404269 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:36.404933 [ALL     ] [E] Failed to write to PCAP: Success
+2026-05-26T12:32:36.404935 [CU-UP-E1] [I] Rx PDU tid=1: E1ReleaseResponse
+2026-05-26T12:32:36.404994 [CU-UP-E1] [I] E1AP CU-UP Release Procedure: E1 TNL association shut down
+2026-05-26T12:32:36.405124 [CU-UP   ] [I] CU-UP stopped successfully
+2026-05-26T12:32:36.407846 [CU-UP   ] [I] Closing PCAP files...
+2026-05-26T12:32:36.408649 [CU-UP   ] [I] PCAP files successfully closed.
 (END)

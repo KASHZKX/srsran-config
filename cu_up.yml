@@ -14,7 +14,7 @@ cu_up:
         bind_addr: 127.0.10.1
 
 log:
-  filename: /home/free5gc/srsran/srsRAN_Project/logs/cu_up.log
+  filename: /home/free5gc/srsran-config/logs/cu_up.log
   all_level: info
 
 pcap:

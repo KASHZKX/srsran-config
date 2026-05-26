@@ -1,0 +1,8 @@
+2026-05-26T16:22:55.746125 [UE     ] [I] Using binary /home/free5gc/srsRAN_4G/build/srsue/src/srsue with arguments: /home/free5gc/srsran-config/multi-ue/ue.conf 
+2026-05-26T16:22:55.826793 [UE     ] [I] Built in Release mode using commit 6bcbd9e5b on branch HEAD.
+2026-05-26T16:23:21.649472 [MAC-NR ] [W] [  241] Contention Resolution Timer expired. Stopping PDCCH Search and going to Response Error (TODO)
+2026-05-26T16:23:22.203071 [MAC-NR ] [W] [  401] Contention Resolution Timer expired. Stopping PDCCH Search and going to Response Error (TODO)
+2026-05-26T16:23:27.310660 [STCK   ] [W] Bearers: EPS bearer ID 1 already registered
+2026-05-26T16:33:46.185474 [RLC-NR ] [W] DRB1: Could not find segment for NACK_SN=158. SO_start=310, SO_end=65535
+2026-05-26T16:33:46.255242 [RLC-NR ] [W] DRB1: Could not find segment for NACK_SN=158. SO_start=310, SO_end=65535
+2026-05-26T16:33:46.312086 [RLC-NR ] [W] DRB1: Could not find segment for NACK_SN=158. SO_start=310, SO_end=65535
