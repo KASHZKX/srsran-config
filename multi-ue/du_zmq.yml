@@ -73,13 +73,13 @@ cell_cfg:
         priority: 200
 
 log:
-  filename: /home/free5gc/srsran-config/multi-ue/logs/du_zmq.log
+  filename: /home/ubuntu/srsran-config/multi-ue/logs/du_zmq.log
   all_level: info
 
 pcap:
   mac_enable: true
-  mac_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_mac.pcap
+  mac_filename: /home/ubuntu/srsran-config/multi-ue/pcaps/du_mac.pcap
   f1ap_enable: true
-  f1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_f1ap.pcap
+  f1ap_filename: /home/ubuntu/srsran-config/multi-ue/pcaps/du_f1ap.pcap
   f1u_enable: true
-  f1u_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_f1u.pcap  
+  f1u_filename: /home/ubuntu/srsran-config/multi-ue/pcaps/du_f1u.pcap  

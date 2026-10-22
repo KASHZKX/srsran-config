@@ -22,13 +22,13 @@ cu_cp:
     bind_addr: 127.0.10.1
 
 log:
-  filename: /home/free5gc/srsran-config/multi-ue/logs/cu_cp.log
+  filename: /home/ubuntu/srsran-config/multi-ue/logs/cu_cp.log
   all_level: info
 
 pcap:
   ngap_enable: true
-  ngap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/cu_cp_ngap.pcap
+  ngap_filename: /home/ubuntu/srsran-config/multi-ue/pcaps/cu_cp_ngap.pcap
   f1ap_enable: true
-  f1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/cu_cp_f1ap.pcap
+  f1ap_filename: /home/ubuntu/srsran-config/multi-ue/pcaps/cu_cp_f1ap.pcap
   e1ap_enable: true
-  e1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/cu_cp_e1ap.pcap
+  e1ap_filename: /home/ubuntu/srsran-config/multi-ue/pcaps/cu_cp_e1ap.pcap
