@@ -1,4 +1,5 @@
 # Example config for a DU with ZMQ radio.
+# CU-CP, CU-UP and srsUE run on this VM; only the CU connects to the remote Core.
 f1ap:
   cu_cp_addr: 127.0.10.1
   bind_addr: 127.0.10.2
@@ -10,6 +11,7 @@ f1u:
 
 ru_sdr:
   device_driver: zmq                # The RF driver name.
+  # Local virtual radio to srsUE, independent of the Core's N2/N3 addresses.
   device_args: tx_port=tcp://127.0.0.1:2000,rx_port=tcp://127.0.0.1:2001,base_srate=23.04e6,verbose # Optionally pass arguments to the selected RF driver.
   srate: 23.04                      # RF sample rate might need to be adjusted according to selected bandwidth.
   tx_gain: 75                       # Transmit gain of the RF might need to adjusted to the given situation.
@@ -37,17 +39,30 @@ cell_cfg:
   pusch:
     mcs_table: qam64                # Sets PUSCH MCS to 64 QAM
 
+  # One radio cell supports both slices for the same UE.
+  slicing:
+    - sst: 1
+      sd: 66051                    # 0x010203; DU expects a decimal integer.
+      sched_cfg:
+        min_prb_policy_ratio: 0
+        max_prb_policy_ratio: 100
+    - sst: 2
+      sd: 1122867                  # 0x112233
+      sched_cfg:
+        min_prb_policy_ratio: 0
+        max_prb_policy_ratio: 100
+
 log:
-  filename: /home/ubuntu/srsran-config/logs/du.log
+  filename: logs/du.log
   all_level: info
 
 pcap:
   mac_enable: true
-  mac_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/du_mac.pcap
+  mac_filename: pcaps/du_mac.pcap
   f1ap_enable: true
-  f1ap_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/du_f1ap.pcap
+  f1ap_filename: pcaps/du_f1ap.pcap
   f1u_enable: true
-  f1u_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/du_f1u.pcap
+  f1u_filename: pcaps/du_f1u.pcap
 
 # Below work for VM env
 expert_execution:

@@ -1,8 +1,10 @@
+# Alternative monolithic gNB; use instead of the separate CU-CP/CU-UP/DU.
 cu_cp:
   amf:
-    addr: 127.0.0.18               # The address or hostname of the AMF.
-    port: 38412
-    bind_addr: 127.0.0.1            # A local IP that the gNB binds to for traffic from the AMF.
+    addr: 192.168.56.111            # Remote AMF N2 address.
+    port: 31412
+    bind_addr: 192.168.56.113       # Local gNB N2 address; no CIDR suffix.
+    bind_interface: enp0s8         # Host-only interface toward the Core.
     supported_tracking_areas:
       - tac: 1
         plmn_list:
@@ -16,7 +18,9 @@ cu_up:
   ngu:
     socket:
       -
-        bind_addr: 127.0.0.1
+        bind_addr: 192.168.56.113   # Local N3 GTP-U address.
+        bind_interface: enp0s8     # Host-only interface toward the UPF.
+        ext_addr: 192.168.56.113    # N3 address advertised to the Core.
 
 ru_sdr:
   device_driver: zmq                # The RF driver name.

@@ -1,29 +1,33 @@
-# Example config for a locally deployed CU-UP
+# CU-UP: remote Core over enp0s8; E1 and F1-U stay within this VM.
 
 cu_up:
+  # Both slices use this CU-UP. CU-CP supplies each session's S-NSSAI over E1;
+  # CU-UP has no static per-UE Requested/Allowed NSSAI configuration.
   e1ap:
     cu_cp_addr: 127.0.20.1
     bind_addr: 127.0.20.2
   ngu:
     socket:
       -
-        bind_addr: 127.0.0.1
+        bind_addr: 192.168.56.113   # Local N3 GTP-U address.
+        bind_interface: enp0s8     # Host-only interface toward the UPF.
+        ext_addr: 192.168.56.113    # N3 address advertised to the Core.
   f1u:
     socket:
       -
         bind_addr: 127.0.10.1
 
 log:
-  filename: /home/ubuntu/srsran-config/logs/cu_up.log
+  filename: logs/cu_up.log
   all_level: info
 
 pcap:
   e1ap_enable: true
-  e1ap_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/cu_up_e1ap.pcap
+  e1ap_filename: pcaps/cu_up_e1ap.pcap
   f1u_enable: true
-  f1u_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/cu_up_f1u.pcap
+  f1u_filename: pcaps/cu_up_f1u.pcap
   n3_enable: true
-  n3_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/cu_up_n3.pcap
+  n3_filename: pcaps/cu_up_n3.pcap
 
 # Below work for VM env
 expert_execution:

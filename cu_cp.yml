@@ -1,12 +1,13 @@
-# Example config for a locally deployed CU-CP listening on the localhost interface for a CU-UP and DU connection
+# CU-CP: remote Core over enp0s8; CU-UP and DU run on this VM.
 
 cu_cp:
   request_pdu_session_timeout: 40
   inactivity_timer: 7000
   amf:
-    addr: 127.0.0.18               # The address or hostname of the AMF.
-    port: 38412
-    bind_addr: 127.0.0.1            # A local IP that the gNB binds to for traffic from the AMF.
+    addr: 192.168.56.111            # Remote AMF N2 address.
+    port: 31412
+    bind_addr: 192.168.56.113       # Local CU-CP N2 address; no CIDR suffix.
+    bind_interface: enp0s8         # Host-only interface toward the Core.
     supported_tracking_areas:
       - tac: 1
         plmn_list:
@@ -14,22 +15,24 @@ cu_cp:
             tai_slice_support_list:
               - sst: 1
                 sd: "010203"
+              - sst: 2
+                sd: "112233"
   e1ap:
-    bind_addr: 127.0.20.1
+    bind_addr: 127.0.20.1          # Local E1 listener for CU-UP.
   f1ap:
-    bind_addr: 127.0.10.1
+    bind_addr: 127.0.10.1          # Local F1-C listener for DU.
 
 log:
-  filename: /home/ubuntu/srsran-config/logs/cu_cp.log
+  filename: logs/cu_cp.log
   all_level: info
 
 pcap:
   ngap_enable: true
-  ngap_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/cu_cp_ngap.pcap
+  ngap_filename: pcaps/cu_cp_ngap.pcap
   f1ap_enable: true
-  f1ap_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/cu_cp_f1ap.pcap
+  f1ap_filename: pcaps/cu_cp_f1ap.pcap
   e1ap_enable: true
-  e1ap_filename: /home/ubuntu/srsran/srsRAN_Project/pcaps/cu_cp_e1ap.pcap
+  e1ap_filename: pcaps/cu_cp_e1ap.pcap
 
 # Below work for VM env
 expert_execution:
