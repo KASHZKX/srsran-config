@@ -10,7 +10,7 @@
 
 ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-SRSRAN_SRC ?= $(abspath $(ROOT)../srsRAN_4G)
+SRSRAN_SRC ?= $(abspath $(ROOT)../thesis-srsRAN_4G)
 SRSRAN_BUILD ?= $(SRSRAN_SRC)/build
 
 OCUDU_SRC ?= $(abspath $(ROOT)../ocudu)
@@ -59,7 +59,7 @@ du: capture-init
 # ==================================================
 
 ue: capture-init
-	@test -x "$(UE_BIN)" || { echo "Build srsRAN_4G first."; exit 1; }
+	@test -x "$(UE_BIN)" || { echo "Build thesis-srsRAN_4G first."; exit 1; }
 	@$(MAKE) --no-print-directory ue-init
 	cd "$(ROOT)" && sudo "$(UE_BIN)" "$(UE_CONFIG)"
 
