@@ -24,6 +24,7 @@ UE_IF = 'rmfs2-ue'
 HOST = '172.31.252.1'
 PEER = '172.31.252.2'
 PORT = '22011'
+GATEWAY_PORT = '22012'
 STATE_DIR = Path('/run/rmf-slice2')
 
 
@@ -128,6 +129,47 @@ def set_sysctl(path, state, key, value):
     if previous != str(value):
         change(path, state, [*prefix, '-qw', f'{key}={value}'],
                [[*prefix, '-qw', f'{key}={previous}']])
+
+
+def setup_gateway(path, state, current):
+    port = GATEWAY_PORT
+    chain(path, state, 'nat', 'RMF_S2_GW_DNAT', 'PREROUTING', [[
+        '-i', TUN, '-s', MEC + '/32', '-d', current + '/32',
+        '-p', 'tcp', '--dport', port, '-j', 'DNAT',
+        '--to-destination', HOST + ':' + port]], ns=True)
+    chain(path, state, 'nat', 'RMF_S2_GW_SNAT', 'POSTROUTING', [[
+        '-o', UE_IF, '-s', MEC + '/32', '-d', HOST + '/32',
+        '-p', 'tcp', '--dport', port, '-m', 'conntrack', '--ctstate', 'DNAT',
+        '-j', 'SNAT', '--to-source', PEER]], ns=True)
+    # This chain runs before the base chain's catch-all veth drop.
+    chain(path, state, 'filter', 'RMF_S2_GW_FWD', 'FORWARD', [
+        ['-i', TUN, '-o', UE_IF, '-s', MEC + '/32', '-d', HOST + '/32',
+         '-p', 'tcp', '--dport', port, '-m', 'conntrack', '--ctstate',
+         'DNAT', '-j', 'ACCEPT'],
+        ['-i', UE_IF, '-o', TUN, '-s', HOST + '/32', '-d', MEC + '/32',
+         '-p', 'tcp', '--sport', port, '-m', 'conntrack', '--ctstate',
+         'ESTABLISHED', '-j', 'ACCEPT'],
+    ], ns=True)
+    chain(path, state, 'filter', 'RMF_S2_GW_HOST', 'INPUT', [
+        ['-i', HOST_IF, '-s', PEER + '/32', '-d', HOST + '/32',
+         '-p', 'tcp', '--dport', port, '-j', 'ACCEPT'],
+        ['-p', 'tcp', '--dport', port, '-j', 'REJECT', '--reject-with', 'tcp-reset'],
+    ])
+    state['ready'] = True
+    save(path, state)
+
+
+def gateway_status(state, current):
+    if not state.get('ready') or state['pdu_ip'] != current:
+        raise SetupError('Gateway setup is stale; run gateway-down, then gateway-up')
+    for table, hook, name, ns in (
+            ('nat', 'PREROUTING', 'RMF_S2_GW_DNAT', True),
+            ('nat', 'POSTROUTING', 'RMF_S2_GW_SNAT', True),
+            ('filter', 'FORWARD', 'RMF_S2_GW_FWD', True),
+            ('filter', 'INPUT', 'RMF_S2_GW_HOST', False)):
+        run(fw('-t', table, '-C', hook, '-j', name, ns=ns))
+    print(json.dumps({'role': 'ue-gateway', 'pdu_ip': current,
+                      'bind_ip': HOST, 'port': int(GATEWAY_PORT), 'ready': True}))
 
 
 def setup_ue(path, state):
@@ -259,15 +301,45 @@ def status(state):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('role', choices=('ue', 'server'))
-    parser.add_argument('action', choices=('up', 'status', 'down'))
+    parser.add_argument('action', choices=(
+        'up', 'status', 'down', 'gateway-up', 'gateway-status', 'gateway-down'))
     args = parser.parse_args(argv)
     if os.geteuid() != 0:
         parser.error('Use sudo for network operations and the root-owned journal')
+    if args.action.startswith('gateway-') and args.role != 'ue':
+        parser.error('The gateway extension is installed only on UE')
     STATE_DIR.mkdir(mode=0o700, parents=True, exist_ok=True)
     with (STATE_DIR / 'lock').open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         path = STATE_DIR / (args.role + '.json')
         state = json.loads(path.read_text()) if path.exists() else None
+        gateway_path = STATE_DIR / 'ue-gateway.json'
+        gateway = json.loads(gateway_path.read_text()) if gateway_path.exists() else None
+        if args.role == 'ue' and args.action in ('down', 'gateway-down'):
+            if gateway:
+                remove(gateway_path, gateway)
+            if args.action == 'gateway-down':
+                print('Owned RMF Slice 2 gateway rules removed')
+                return 0
+        if args.action in ('gateway-up', 'gateway-status'):
+            if not state:
+                raise SetupError('Run ue up before enabling the gateway')
+            status(state)
+            current = state['pdu_ip']
+            if gateway:
+                gateway_status(gateway, current)
+            elif args.action == 'gateway-status':
+                raise SetupError('No gateway journal; run gateway-up first')
+            else:
+                gateway = {'pdu_ip': current, 'ready': False, 'undo': []}
+                try:
+                    setup_gateway(gateway_path, gateway, current)
+                    gateway_status(gateway, current)
+                except Exception:
+                    if gateway_path.exists():
+                        remove(gateway_path, gateway)
+                    raise
+            return 0
         if args.action == 'down':
             if state:
                 remove(path, state)
