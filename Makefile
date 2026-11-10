@@ -4,6 +4,16 @@
 
 .DEFAULT_GOAL := cp
 
+.PHONY: rmf-slice2-up rmf-slice2-status rmf-slice2-down
+rmf-slice2-up:
+	@sudo python3 "$(ROOT)scripts/rmf-slice2-network.py" ue up
+
+rmf-slice2-status:
+	@sudo python3 "$(ROOT)scripts/rmf-slice2-network.py" ue status
+
+rmf-slice2-down:
+	@sudo python3 "$(ROOT)scripts/rmf-slice2-network.py" ue down
+
 # ==================================================
 # Paths
 # ==================================================
