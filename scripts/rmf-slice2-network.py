@@ -26,6 +26,12 @@ PEER = '172.31.252.2'
 PORT = '22011'
 GATEWAY_PORT = '22012'
 STATE_DIR = Path('/run/rmf-slice2')
+CAMERA_POOL = ipaddress.ip_network('10.60.0.0/17')
+CAMERA_TUN = 'tun_srsue_pdu1'
+CAMERA_DN = '192.168.56.115'
+CAMERA_UPF = '192.168.56.99'
+CAMERA_PORT = '5600'
+CAMERA_TABLE = '15600'
 
 
 class SetupError(RuntimeError):
@@ -83,7 +89,7 @@ def remove(path, state):
             result = run(command, check=False)
             # "already absent" is harmless after an interrupted setup.
             absent = ('does not exist', 'No such', 'Cannot find', 'Bad rule',
-                      'No chain/target/match', 'not found')
+                      'No chain/target/match', 'not found', 'No such process')
             if result.returncode and not any(x in result.stderr for x in absent):
                 errors.append(f'{shlex.join(command)}: {result.stderr.strip()}')
     if errors:
@@ -298,11 +304,122 @@ def status(state):
         print(json.dumps({'role': 'server', 'gateway': EDGE, 'source': MEC, 'ready': True}))
 
 
+
+def camera_pdu_ip():
+    data = read_json(ip('-j', '-4', 'addr', 'show', 'dev', CAMERA_TUN, ns=True))
+    addresses = [a['local'] for link in data for a in link.get('addr_info', [])
+                 if a.get('family') == 'inet']
+    if len(addresses) != 1 or ipaddress.ip_address(addresses[0]) not in CAMERA_POOL:
+        raise SetupError(f'PDU1 must have one current IPv4 address in {CAMERA_POOL}')
+    return addresses[0]
+
+
+def own(path, state, prefix, item):
+    change(path, state, [*prefix, 'add', *item], [[*prefix, 'del', *item]])
+
+
+def install_camera_route(path, state, selectors, route, ns=False):
+    rules = read_json(ip('-j', '-4', 'rule', 'show', ns=ns))
+    if any(rule.get('priority') in (1104, 1105) for rule in rules):
+        raise SetupError('Policy priorities 1104/1105 are already in use')
+    routes = run(ip('-4', 'route', 'show', 'table', CAMERA_TABLE, ns=ns), check=False)
+    if routes.stdout.strip():
+        raise SetupError(f'Camera route table {CAMERA_TABLE} is already in use')
+    for priority, tail in (('1105', ['prohibit']), ('1104', ['lookup', CAMERA_TABLE])):
+        own(path, state, ip('-4', 'rule', ns=ns), ['priority', priority, *selectors, *tail])
+    own(path, state, ip('-4', 'route', ns=ns),
+        ['table', CAMERA_TABLE, CAMERA_DN + '/32', *route])
+
+
+def setup_camera_ue(path, state):
+    pdu1 = camera_pdu_ip()
+    state['pdu_ip'] = pdu1
+    save(path, state)
+    # Scope the guard to the camera port even for a misconfigured sender.
+    target = ['-d', CAMERA_DN + '/32', '-p', 'tcp', '--dport', CAMERA_PORT]
+    chain(path, state, 'filter', 'RMF_CAM_OUTPUT', 'OUTPUT', [
+        ['-o', HOST_IF, '-s', HOST + '/32', *target, '-j', 'RETURN'],
+        [*target, '-j', 'REJECT', '--reject-with', 'tcp-reset'],
+    ])
+    selectors = ['from', HOST + '/32', 'to', CAMERA_DN + '/32',
+                 'ipproto', 'tcp', 'dport', CAMERA_PORT]
+    install_camera_route(path, state, ['iif', UE_IF, *selectors],
+                         ['dev', CAMERA_TUN, 'src', pdu1], ns=True)
+    install_camera_route(path, state, selectors,
+                         ['via', PEER, 'dev', HOST_IF, 'src', HOST, 'mtu', '1400'])
+    chain(path, state, 'nat', 'RMF_CAM_SNAT', 'POSTROUTING', [[
+        '-o', CAMERA_TUN, '-s', HOST + '/32', *target,
+        '-j', 'SNAT', '--to-source', pdu1]], ns=True)
+    chain(path, state, 'filter', 'RMF_CAM_FORWARD', 'FORWARD', [
+        ['-i', UE_IF, '-o', CAMERA_TUN, '-s', HOST + '/32', *target,
+         '-m', 'conntrack', '--ctstate', 'NEW,ESTABLISHED', '-j', 'ACCEPT'],
+        ['-i', CAMERA_TUN, '-o', UE_IF, '-s', CAMERA_DN + '/32', '-d', HOST + '/32',
+         '-p', 'tcp', '--sport', CAMERA_PORT, '-m', 'conntrack',
+         '--ctstate', 'ESTABLISHED', '-j', 'ACCEPT'],
+    ], ns=True)
+
+
+def setup_camera_server(path, state):
+    for interface, address in (('enp0s8', MEC), ('enp0s9', CAMERA_DN)):
+        data = read_json(ip('-j', '-4', 'addr', 'show', 'dev', interface))
+        if not any(addr.get('local') == address for link in data
+                   for addr in link.get('addr_info', [])):
+            raise SetupError(f'{interface} must own {address}')
+    if run(ip('-4', 'route', 'show', 'exact', CAMERA_UPF + '/32')).stdout.strip():
+        raise SetupError(f'Existing route to {CAMERA_UPF} must be reviewed first')
+    for iface in ('enp0s8', 'enp0s9'):
+        key = f'net.ipv4.conf.{iface}.arp_ignore'
+        previous = run(['sysctl', '-n', key]).stdout.strip()
+        if previous != '1':
+            change(path, state, ['sysctl', '-qw', key + '=1'],
+                   [['sysctl', '-qw', f'{key}={previous}']])
+    own(path, state, ip('-4', 'route'),
+        [CAMERA_UPF + '/32', 'dev', 'enp0s9', 'src', CAMERA_DN, 'proto', '186'])
+    receiver = ['-d', CAMERA_DN + '/32', '-p', 'tcp', '--dport', CAMERA_PORT]
+    chain(path, state, 'filter', 'RMF_CAM_DN', 'INPUT', [
+        ['-i', 'enp0s9', '-s', CAMERA_UPF + '/32', *receiver, '-j', 'ACCEPT'],
+        [*receiver, '-j', 'REJECT', '--reject-with', 'tcp-reset'],
+    ])
+
+
+def camera_status(role, state):
+    if not state.get('ready'):
+        raise SetupError('Incomplete camera setup; run camera-down before applying again')
+    result = {'role': role + '-camera', 'destination': CAMERA_DN, 'port': int(CAMERA_PORT)}
+    if role == 'ue':
+        current = camera_pdu_ip()
+        if state['pdu_ip'] != current:
+            raise SetupError('PDU1 IP changed; stop Camera and run camera-down then camera-up')
+        for table, hook, name, in_ns in (
+            ('filter', 'OUTPUT', 'RMF_CAM_OUTPUT', False),
+            ('filter', 'FORWARD', 'RMF_CAM_FORWARD', True),
+            ('nat', 'POSTROUTING', 'RMF_CAM_SNAT', True),
+        ):
+            run(fw('-t', table, '-C', hook, '-j', name, ns=in_ns))
+        for in_ns, interface in ((False, HOST_IF), (True, CAMERA_TUN)):
+            args = ['-j', '-4', 'route', 'get', CAMERA_DN, 'from', HOST]
+            if in_ns:
+                args.extend(['iif', UE_IF])
+            args.extend(['ipproto', 'tcp', 'dport', CAMERA_PORT])
+            route = read_json(ip(*args, ns=in_ns))
+            if not route or route[0].get('dev') != interface:
+                raise SetupError(f'Camera destination must use {interface}')
+        result['pdu_ip'] = current
+    else:
+        run(fw('-C', 'INPUT', '-j', 'RMF_CAM_DN'))
+        route = read_json(ip('-j', '-4', 'route', 'get', CAMERA_UPF, 'from', CAMERA_DN))
+        if not route or route[0].get('dev') != 'enp0s9':
+            raise SetupError('Camera DN reply must use enp0s9')
+        result['peer'] = CAMERA_UPF
+    print(json.dumps(dict(result, ready=True)))
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('role', choices=('ue', 'server'))
     parser.add_argument('action', choices=(
-        'up', 'status', 'down', 'gateway-up', 'gateway-status', 'gateway-down'))
+        'up', 'status', 'down', 'gateway-up', 'gateway-status', 'gateway-down',
+        'camera-up', 'camera-status', 'camera-down'))
     args = parser.parse_args(argv)
     if os.geteuid() != 0:
         parser.error('Use sudo for network operations and the root-owned journal')
@@ -315,6 +432,36 @@ def main(argv=None):
         state = json.loads(path.read_text()) if path.exists() else None
         gateway_path = STATE_DIR / 'ue-gateway.json'
         gateway = json.loads(gateway_path.read_text()) if gateway_path.exists() else None
+        camera_path = STATE_DIR / (args.role + '-camera.json')
+        camera = json.loads(camera_path.read_text()) if camera_path.exists() else None
+        if args.action == 'camera-down' or (args.role == 'ue' and args.action == 'down'):
+            if camera:
+                remove(camera_path, camera)
+            if args.action == 'camera-down':
+                print('Owned RMF Camera rules removed')
+                return 0
+        if args.action in ('camera-up', 'camera-status'):
+            if camera:
+                camera_status(args.role, camera)
+            elif args.action == 'camera-status':
+                raise SetupError('No camera journal; run camera-up first')
+            else:
+                if args.role == 'ue':
+                    if not state:
+                        raise SetupError('Run ue up before enabling Camera')
+                    status(state)
+                camera = {'ready': False, 'undo': []}
+                try:
+                    configure = setup_camera_ue if args.role == 'ue' else setup_camera_server
+                    configure(camera_path, camera)
+                    camera['ready'] = True
+                    save(camera_path, camera)
+                    camera_status(args.role, camera)
+                except Exception:
+                    if camera_path.exists():
+                        remove(camera_path, camera)
+                    raise
+            return 0
         if args.role == 'ue' and args.action in ('down', 'gateway-down'):
             if gateway:
                 remove(gateway_path, gateway)
