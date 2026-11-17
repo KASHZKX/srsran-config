@@ -24,6 +24,11 @@ make ue2
 ~~~
 
 GNU Radio 用既有 multi_ue_scenario.grc 將兩個 UE 接到同一小區。
+重新註冊或任一 UE release 後，需完整結束並重啟六個元件，
+讓 CU、DU、UE 與 GNU Radio 的 ZMQ 狀態一致。
+兩台 UE 都要啟動，不要等第一台完成連線才啟動第二台。
+一般重新開始仍用 make cp 的預設 Core 重啟流程。
+
 
 | 元件 | IMSI 尾碼 | S-NSSAI | DNN | namespace | TUN |
 | --- | --- | --- | --- | --- | --- |
