@@ -1,7 +1,18 @@
 # Open-RMF 雙 UE、每台一條 PDU Session
 
 OCUDU 使用 release_26_04，UE 使用原生 release_25_10。
+先結束上一輪的兩個 UE、CU-CP、CU-UP、DU 與 GNU Radio。
 從本目錄依序在獨立終端執行，保持程序運行。
+make cp 預設先經 SSH 到 Core，依序重建 SMF、確認四個 UPF 的
+PFCP 關聯，再重建 AMF，避免舊的 AMF Session context 觸發 SMF 崩潰。
+SSH 帳號預設為 ubuntu@192.168.56.111，可用 CORE_SSH 覆寫。
+本機尚未設定免密登入時，SSH 會要求 Core 帳號的密碼。
+
+已自行重啟並確認 Core 時，可明確使用 make cp CORE_RESET=0。
+make core-check 只檢查 Core，不會重啟。
+make core-reset 只重啟 SMF、AMF，不修改 Core 程式碼或 Helm 設定。
+這是避開既有 SMF 問題的啟動流程，並未修復 SMF 的空指標錯誤。
+若有 srsue 程序仍在執行，重啟指令會停止並要求先關閉 UE。
 
 ~~~bash
 make cp
@@ -23,7 +34,22 @@ GNU Radio 用既有 multi_ue_scenario.grc 將兩個 UE 接到同一小區。
 兩個程序共用網路 namespace，各自建立不同的 TUN。
 TUN 尾碼沿用 Open-RMF 現有介面名稱，對應兩個 UE。
 
+make ue 與 make ue2 會以鎖避免同時建立 namespace 的競態，
+並自動啟用 ue1 的 loopback。取得各自 TUN IPv4 後，自動設定
+table 1001/1002 的 default route 與來源 IP 規則。
+因此不需要手動執行 ip netns add 或 ue-route-all。
+兩台 UE 共用 namespace，應依來源 IP 選擇 TUN，避免加入兩條
+互相衝突的 main-table default route。未指定來源的應用不保證走哪條 UE，
+應使用來源 IP 綁定或 Open-RMF 的網路配置。
+
+若 90 秒仍未取得 PDU IPv4，啟動器會報錯並停止該 UE，
+可用 UE_ROUTE_TIMEOUT 調整等待時間。
+已有同名 TUN 時會拒絕啟動，以免使用上一個 UE 的介面。
+結束 UE 時會保留共用 namespace 與其他應用的網路物件。
+啟動器會將 Ctrl+C 傳給 srsue，並隨程序結束停止路由監測。
+
 兩條連線建立後，執行下列指令驗證各介面。
+ue-route-all 保留作為手動修復路由的指令，通常不需要另外執行。
 
 ~~~bash
 make ue-route-all
@@ -45,3 +71,12 @@ MEC 為 192.168.56.112，User 的 Fleet Manager 與 relay 使用
 每次重啟 RAN 前，先用 Open-RMF 的 net-down-ue、
 net-down-mec 與 camera-dn-down 撤回前次應用的網路設定。
 一般註冊與 Open-RMF 的清理各由自己的 Makefile 管理。
+
+## 本次 release 原因
+
+2026-11-17 18:33:43 UTC，SMF 清理舊 Session 時，
+SendPfcpSessionDeletionRequest 在 send.go:314 發生 nil pointer panic。
+AMF 隨後紀錄 duplicated PDU session ID、SMF connection refused。
+CU-CP 在 18:34:02–03 等待 20000 ms 仍未完成 PDU 建立後釋放兩台 UE。
+當時 ue1 namespace 已存在，因此 namespace 缺失不是這次 release 原因。
+來源路由是 PDU 成功後的資料面設定，無法解決上述 SMF 崩潰。
