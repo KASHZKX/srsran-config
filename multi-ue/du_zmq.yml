@@ -50,36 +50,28 @@ cell_cfg:
     mcs_table: qam64                # Sets PUSCH MCS to 64 QAM
   
   slicing:
-    - # Slice 1: eMBB (needs guaranteed resources)
-      sst: 1
-      sd: 66051 # 0x010203 in decimal
+    - sst: 1
+      sd: 66051  # 0x010203
       sched_cfg:
-        # Set min=0 to allow full utilization when alone
         min_prb_policy_ratio: 0
-        # Allow eMBB to use 50% max to leave headroom for URLLC
         max_prb_policy_ratio: 50
-        # LOWER priority value (0-255 scale, higher number = higher priority)
         priority: 10
 
-    - # Slice 2: URLLC (low latency priority)
-      sst: 1
-      sd: 1122867 # 0x112233 in decimal
+    - sst: 2
+      sd: 1122867  # 0x112233
       sched_cfg:
-        # No minimum - takes what it needs when active
         min_prb_policy_ratio: 0
-        # Can burst up to 100% for low latency
         max_prb_policy_ratio: 100
-        # HIGHER priority value = scheduled first (0-255 scale)
         priority: 200
 
 log:
-  filename: /home/free5gc/srsran-config/multi-ue/logs/du_zmq.log
+  filename: logs/du_zmq.log
   all_level: info
 
 pcap:
   mac_enable: true
-  mac_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_mac.pcap
+  mac_filename: pcaps/du_mac.pcap
   f1ap_enable: true
-  f1ap_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_f1ap.pcap
+  f1ap_filename: pcaps/du_f1ap.pcap
   f1u_enable: true
-  f1u_filename: /home/free5gc/srsran-config/multi-ue/pcaps/du_f1u.pcap  
+  f1u_filename: pcaps/du_f1u.pcap
