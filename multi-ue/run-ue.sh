@@ -66,7 +66,9 @@ child=$!
     current_ip=$(ip -n "$ns" -4 -o addr show dev "$tun" 2>/dev/null |
       awk '{split($4,a,"/");print a[1];exit}' || true)
     if [[ -n $current_ip && $current_ip != "$last_ip" ]]; then
-      if ! bash "$route_script" "$ns" "$tun" "$route_id"; then
+      route_log="logs/route-$tun.log"
+      if ! bash "$route_script" "$ns" "$tun" "$route_id" >"$route_log" 2>&1; then
+        cat "$route_log" >&2
         echo "Route setup failed for $ns/$tun. Stop the UE and check routing rules." >&2
         echo failed >"$failure"
         terminate_child
