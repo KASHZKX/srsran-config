@@ -18,7 +18,7 @@ print(p["metadata"]["name"],s["state"]["running"]["startedAt"])
 }
 associations() {
   local log ip
-  log=$(k logs "$1" -c smf --tail=2000 2>&1)
+  log=$(k logs "$1" -c smf --tail=-1 2>&1)
   for ip in 241 242 243 245; do
     grep -F "Received PFCP Association Setup Accepted Response from UPF[10.100.50.$ip]" <<<"$log" >/dev/null || return 1
   done
