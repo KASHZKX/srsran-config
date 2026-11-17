@@ -52,7 +52,6 @@ table 1001/1002 的 default route 與來源 IP 規則。
 ue-route-all 保留作為手動修復路由的指令，通常不需要另外執行。
 
 ~~~bash
-make ue-route-all
 make ue-ping
 make ue2-ping
 ~~~
@@ -80,3 +79,8 @@ AMF 隨後紀錄 duplicated PDU session ID、SMF connection refused。
 CU-CP 在 18:34:02–03 等待 20000 ms 仍未完成 PDU 建立後釋放兩台 UE。
 當時 ue1 namespace 已存在，因此 namespace 缺失不是這次 release 原因。
 來源路由是 PDU 成功後的資料面設定，無法解決上述 SMF 崩潰。
+
+make ue-check 會顯示兩個 TUN 位址、來源規則、table 1001/1002，
+並從兩個 UE 的來源 IP 各測試外網與 MEC。可用
+make ue-check 2>&1 | tee /tmp/dual-ue-network-check.log 保存結果。
+這個檢查不修改路由或重啟任何元件。

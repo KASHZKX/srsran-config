@@ -41,7 +41,7 @@ gnu:
 # ==================================================
 # make cp resets Core once, before CU-CP starts. Never reset Core in each UE target.
 # SSH to Core must be available; its account must be allowed to run MicroK8s.
-.PHONY: core-prepare core-check core-reset ue-route-all ue-ping ue2-ping
+.PHONY: core-prepare core-check core-reset ue-route-all ue-ping ue2-ping ue-check
 core-prepare:
 	@if pgrep -x ocucp >/dev/null || pgrep -x srsue >/dev/null; then \
 		echo "Stop the previous CU-CP and both UEs before make cp." >&2; exit 1; fi
@@ -59,6 +59,9 @@ core-reset:
 ue-route-all:
 	@$(SUDO) bash "$(ROOT)../scripts/ue-session-route.sh" ue1 tun_srsue_pdu1 1
 	@$(SUDO) bash "$(ROOT)../scripts/ue-session-route.sh" ue1 tun_srsue_pdu2 2
+
+ue-check:
+	@$(SUDO) bash "$(ROOT)check-ue-network.sh"
 
 ue-ping:
 	@$(SUDO) bash "$(ROOT)ue-ping.sh" tun_srsue_pdu1 8.8.8.8
